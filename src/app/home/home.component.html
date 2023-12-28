@@ -1,0 +1,197 @@
+<div class="container">
+  <mat-card class="main-content">
+    <mat-card-content>
+      <div class="metric-container">
+        <div class="metric" *ngFor="let metric of metrics">
+          <div class="metric-title">
+            {{ metric.title }}
+            <span [ngClass]="{ positive: metric.increase, negative: !metric.increase }">
+              <mat-icon *ngIf="metric.increase">arrow_upward</mat-icon>
+              <mat-icon *ngIf="!metric.increase">arrow_downward</mat-icon></span
+            >
+          </div>
+          <div class="metric-value">{{ metric.value | number }}</div>
+          <div class="metric-change" [ngClass]="{ positive: metric.increase, negative: !metric.increase }">
+            {{ metric.change | percent }} Increase compared to last week
+          </div>
+        </div>
+      </div>
+      <div class="overall-score-container">
+        <div class="overall-score">
+          <mat-card style="margin-bottom: 1rem">
+            <mat-card-subtitle style="text-align: start">Overall Score</mat-card-subtitle>
+            <div class="score-indicator">
+              <div class="score-bar">
+                <div class="score-fill" [style.width.%]="score"></div>
+              </div>
+              <div class="score-value">{{ score }}%</div>
+            </div>
+          </mat-card>
+          <mat-card>
+            <mat-card-subtitle style="text-align: start">Industry Rating</mat-card-subtitle>
+            <div class="badge">
+              <div class="badge-header">
+                <span class="badge-industry">Industry</span>
+                <span class="badge-country">Country</span>
+                <span class="badge-global">Global</span>
+              </div>
+              <div class="badge-stars">
+                <!-- Use SVG or Font icons for stars -->
+              </div>
+              <div class="badge-number">20</div>
+              <div class="badge-progress">
+                <span>20% increase from last week</span>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div class="track-bar">
+          <div class="race-track">
+            <div class="lane" id="lane1">
+              <div class="rate"><img src="../../assets/carbon_logo-xing.png" style="padding: 0.5rem" alt="img" /></div>
+            </div>
+            <div class="lane" id="lane2">
+              <div class="rate"><img src="../../assets/carbon_logo-xing.png" style="padding: 0.5rem" alt="img" /></div>
+            </div>
+            <div class="lane" id="lane3">
+              <div class="rate"><img src="../../assets/carbon_logo-xing.png" style="padding: 0.5rem" alt="img" /></div>
+            </div>
+            <div class="lane" id="lane4">
+              <div class="rate"><img src="../../assets/carbon_logo-xing.png" style="padding: 0.5rem" alt="img" /></div>
+            </div>
+            <div class="finish-line">
+              <!-- The checkered flag could be an image or created with CSS -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="active-jobs-container">
+        <div class="header">
+          <h2>Active Jobs</h2>
+          <button class="navigation-btn">
+            <mat-icon>arrow_circle_left</mat-icon>
+            <mat-icon>arrow_circle_right</mat-icon>
+          </button>
+        </div>
+        <!-- The rest of your component's content goes here -->
+        <div class="job-container">
+          <div class="card-container">
+            <div class="card-header">
+              {{ cardData.title }}
+              <span class="posted-time">{{ cardData.postedTime }}</span>
+            </div>
+            <div class="card-content">
+              <!-- Image of the monitor and other elements goes here -->
+              <!-- Placeholder for image -->
+              <img src="../../assets/background.jpg" alt="Monitor" class="monitor-img" />
+              <!-- Placeholder for stats -->
+              <div class="stats">
+                <div *ngFor="let stat of cardData.stats" class="stat-item">
+                  <span class="stat-label">{{ stat.label }}</span>
+                  <span class="stat-value">{{ stat.value }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-container">
+            <div class="card-header">
+              {{ cardData.title }}
+              <span class="posted-time">{{ cardData.postedTime }}</span>
+            </div>
+            <div class="card-content">
+              <!-- Image of the monitor and other elements goes here -->
+              <!-- Placeholder for image -->
+              <img src="../../assets/background.jpg" alt="Monitor" class="monitor-img" />
+              <!-- Placeholder for stats -->
+              <div class="stats">
+                <div *ngFor="let stat of cardData.stats" class="stat-item">
+                  <span class="stat-label">{{ stat.label }}</span>
+                  <span class="stat-value">{{ stat.value }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-container">
+            <div class="card-header">
+              {{ cardData.title }}
+              <span class="posted-time">{{ cardData.postedTime }}</span>
+            </div>
+            <div class="card-content">
+              <!-- Image of the monitor and other elements goes here -->
+              <!-- Placeholder for image -->
+              <img src="../../assets/background.jpg" alt="Monitor" class="monitor-img" />
+              <!-- Placeholder for stats -->
+              <div class="stats">
+                <div *ngFor="let stat of cardData.stats" class="stat-item">
+                  <span class="stat-label">{{ stat.label }}</span>
+                  <span class="stat-value">{{ stat.value }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="width: 100%"><app-bar-chart></app-bar-chart></div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="calender-content">
+    <mat-card-content>
+      <mat-card class="demo-inline-calendar-card">
+        <mat-calendar></mat-calendar>
+      </mat-card>
+      <div class="appointments">
+        <div class="appointment-header">
+          <h3>Appointments</h3>
+          <div class="buttons">
+            <button class="btn" [class.active]="viewAll" (click)="setView(true)">All</button>
+            <button class="btn" [class.active]="!viewAll" (click)="setView(false)">Interview</button>
+          </div>
+        </div>
+        <div class="appointment-container">
+          <div class="date-info">
+            <span class="day-label">{{ dayLabel }}</span>
+            <span class="date">{{ appointmentDate | date : 'M/d/yyyy' }}</span>
+          </div>
+          <div class="time-button-container">
+            <div class="time-info">
+              <span class="time green">{{ appointmentTime | date : 'h:mm a' }}</span
+              ><br />
+              <span class="name-role green">{{ userName }} / {{ userRole }}</span>
+            </div>
+            <button class="join-button">Join</button>
+          </div>
+        </div>
+        <div class="appointment-container">
+          <div class="date-info">
+            <span class="day-label">{{ dayLabel }}</span>
+            <span class="date">{{ appointmentDate | date : 'M/d/yyyy' }}</span>
+          </div>
+          <div class="time-info">
+            <span class="time yellow">{{ appointmentTime | date : 'h:mm a' }}</span
+            ><br />
+            <span class="name-role yellow">{{ userName }} / {{ userRole }}</span>
+          </div>
+          <button class="join-button">Join</button>
+        </div>
+        <div class="appointment-container">
+          <div class="date-info">
+            <span class="day-label">{{ dayLabel }}</span>
+            <span class="date">{{ appointmentDate | date : 'M/d/yyyy' }}</span>
+          </div>
+          <div class="time-info">
+            <span class="time pink">{{ appointmentTime | date : 'h:mm a' }}</span
+            ><br />
+            <span class="name-role pink">{{ userName }} / {{ userRole }}</span>
+          </div>
+          <button class="join-button">Join</button>
+        </div>
+      </div>
+      <div style="width: 100%">
+        <app-ai-matched-widget></app-ai-matched-widget>
+      </div>
+    </mat-card-content>
+    <div style="height: auto; display: flex; flex-direction: column">
+      <app-job-board></app-job-board><app-pie-chart-2></app-pie-chart-2>
+    </div>
+  </mat-card>
+</div>

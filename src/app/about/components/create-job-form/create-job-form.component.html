@@ -1,0 +1,48 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div class="button">
+        <button class="job-post-button" (click)="navigateToNext()" [disabled]="isLastStep()">Create job post</button>
+      </div>
+
+      <div class="job-post-creation">
+        <h2>Job Info</h2>
+        <div class="progress-bar" cdkStepper #stepper>
+          <div class="step" [ngClass]="0 === selectedIndex ? 'step-active' : ''"></div>
+          <div class="line"></div>
+          <div class="step" [ngClass]="1 === selectedIndex ? 'step-active' : ''"></div>
+          <div class="line"></div>
+          <div class="step" [ngClass]="2 === selectedIndex ? 'step-active' : ''"></div>
+          <div class="line"></div>
+          <div class="step" [ngClass]="3 === selectedIndex ? 'step-active' : ''"></div>
+          <div class="line"></div>
+          <div class="step" [ngClass]="4 === selectedIndex ? 'step-active' : ''"></div>
+        </div>
+      </div>
+
+      <div class="tabs-container">
+        <ul class="tabs-list">
+          <li class="tab" *ngFor="let step of steps; let i = index" [attr.aria-selected]="i === selectedIndex">
+            <a href="javascript:void(0)" [ngClass]="i === selectedIndex ? 'active' : ''" (click)="navigateToStep(i)">{{
+              step.label
+            }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="job-info">
+        <p>
+          Inform potential candidates about the position's title, location, and requirements. And welcome applicants
+          from all backgrounds, regardless of race, color, religion, gender identity or expression, sexual orientation,
+          national origin, genetics, disability, age, or veteran status. We are committed to providing a fair and
+          unbiased recruitment process.
+        </p>
+      </div>
+
+      <div>
+        <button mat-button *ngIf="showPreviousButton()" (click)="navigateToPrevious()">Previous</button>
+        <button mat-button *ngIf="showNextButton()" (click)="navigateToNext()">Save & Continue</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

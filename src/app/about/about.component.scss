@@ -1,0 +1,271 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  //align-items: center;
+  height: 100%;
+  gap: 20px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #596780;
+  line-height: 30px;
+}
+.job-post-section,
+.candidate-pool-section,
+.social-connect-section {
+  padding: 20px;
+}
+
+.create-post-btn,
+.add-candidate-btn,
+.invite-collaborators-btn,
+.connect-facebook-btn,
+.connect-linkedin-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-post-btn {
+  background-color: #ff4081;
+  color: white;
+}
+
+.add-candidate-btn {
+  background-color: #ff4081;
+  color: white;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.invite-collaborators-btn {
+  background-color: #2196f3;
+  color: white;
+}
+
+.connect-facebook-btn {
+  background-color: #3b5998;
+  color: white;
+}
+
+.connect-linkedin-btn {
+  background-color: #0e76a8;
+  color: white;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.job-post-section,
+.candidate-pool-section,
+.social-connect-section {
+  border-radius: 60px;
+  padding: 20px;
+}
+.job-post-section {
+  background-color: #f8bdcf;
+}
+
+.create-post-btn,
+.add-candidate-btn,
+.invite-collaborators-btn,
+.connect-facebook-btn,
+.connect-linkedin-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-post-btn {
+  background-color: #ff4081;
+  color: white;
+}
+
+.add-candidate-btn {
+  background-color: #ff4081;
+  color: white;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.invite-collaborators-btn {
+  background-color: #2196f3;
+  color: white;
+}
+
+.connect-facebook-btn {
+  background-color: #3b5998;
+  color: white;
+}
+
+.connect-linkedin-btn {
+  background-color: #0e76a8;
+  color: white;
+}
+.job-post-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.job-post-header h1 {
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.job-post-header p {
+  color: #666;
+  font-size: 14px;
+}
+
+.job-post-header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #596780;
+  line-height: 30px;
+}
+
+.create-post-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #ea3970;
+  color: white;
+  font-weight: bold;
+  width: 288px;
+  height: 48px;
+  cursor: pointer;
+  border-radius: 60px;
+  transition: all 0.3 ease-out;
+}
+
+.create-post-btn:hover {
+  background: darken($color: #ea3970, $amount: 10);
+}
+
+.candidate-pool {
+  display: flex;
+  //flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e0e9f4; /* Assuming a light grey background */
+  padding: 20px;
+  border-radius: 60px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.candidate-pool-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.planet-icon {
+  // width: 40px; /* Adjust size accordingly */
+  margin-right: 16px;
+}
+
+.title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.candidate-pool-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #596780;
+  line-height: 30px;
+}
+
+.candidate-pool-description {
+  font-size: 14px;
+  color: #666;
+  margin: 4px 0 0;
+}
+
+.add-candidate-button {
+  padding: 10px 20px;
+  background-color: #ff4081; /* Assuming a pink color */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background-color: darken(#ff4081, 10%);
+  }
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  //padding: 20px;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  border-radius: 25px;
+  padding: 10px 20px;
+  height: 13rem;
+  width: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.icon-container {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  /* Add specific icons here */
+}
+
+.text-container h4 {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.text-container p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.card-btn {
+  background: transparent;
+  border: none;
+}

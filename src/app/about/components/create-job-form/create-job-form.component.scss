@@ -1,0 +1,121 @@
+.container {
+  text-align: center;
+  padding: 1rem;
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+.job-post-creation {
+  background: url("../../../../assets/job.png");
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  border-radius: 25px;
+  height: 10rem;
+}
+
+.progress-bar {
+  display: flex;
+  //align-items: center;
+}
+
+.step {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  position: relative;
+}
+
+.step-active {
+  background-color: #fff;
+}
+
+.line {
+  height: 2px;
+  flex-grow: 1;
+  background-color: #ddd;
+  position: relative;
+  top: 14px;
+}
+
+h2 {
+  color: #fff;
+  margin-top: 10px;
+}
+.job-info {
+  background: #cfe8da;
+  padding: 1rem;
+}
+.job-info p {
+  color: #0e8d45;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.tabs-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tabs-list {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  padding-left: 0;
+}
+
+.tab {
+  list-style: none;
+}
+
+.tab a {
+  text-decoration: none;
+  color: #000;
+  padding: 10px 20px;
+  display: block;
+  //background: #f0f0f0;
+}
+
+.active {
+  background: #ff4081;
+  color: white;
+  border-radius: 60px;
+}
+
+.job-post-button {
+  background-color: #fff; /* Replace with the exact color code you want */
+  border: none;
+  border-radius: 5px; /* Adjust for desired curvature */
+  color: #596780; /* Or any other color depending on your design */
+  padding: 10px 20px; /* Adjust for desired padding */
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 16px; /* Adjust for desired size */
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.job-post-button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.button {
+  width: 100%;
+  display: flex;
+
+  mat-icon {
+    font-size: 1rem;
+  }
+}

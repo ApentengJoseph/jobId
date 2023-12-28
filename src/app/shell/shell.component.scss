@@ -1,0 +1,193 @@
+:host {
+  display: flex;
+  flex: 1;
+}
+
+.mat-sidenav {
+  min-width: 270px;
+  max-width: 28%;
+  height: 100vh;
+  position: fixed;
+}
+
+.has-border {
+  border-right: 1px solid rgb(0 0 0 / 12%);
+}
+
+.mat-list {
+  padding-top: 0;
+}
+
+.mat-list-item {
+  text-decoration: none;
+
+  &:hover {
+    background: rgb(0 0 0 / 5%);
+  }
+}
+
+.menu-button {
+  margin-right: 1rem;
+}
+
+mat-toolbar {
+  background-color: #fff;
+  position: sticky;
+}
+
+.active {
+  background-color: red;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.welcome-text {
+  font-size: 16px;
+  color: #333;
+  margin-right: 20px;
+}
+
+.search-container {
+  width: 50%;
+  margin: 0 20px;
+  position: relative;
+}
+
+.search-bar {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 70px;
+}
+
+.close-post-btn {
+  background-color: #fff;
+  color: #90a3bf;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 60px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #90a3bf;
+}
+.new-post-btn {
+  background-color: #ea3970;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 60px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.new-post-btn:hover {
+  background: darken($color: #ea3970, $amount: 10);
+}
+
+.user-controls {
+  display: flex;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+img {
+  width: 3rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2rem;
+
+  img {
+    width: 2rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.sidebar {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 0;
+  height: 90%;
+  // Adjust width and other properties as necessary to match the image
+}
+
+.nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  //height: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    margin-top: 2rem;
+
+    &.active {
+      background-color: #fce4ec; // Use the exact color from the image
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        background-color: #ec407a; // Use the exact color from the image
+      }
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #333; // Match text color from the image
+      font-size: 16px; // Match font size from the image
+
+      mat-icon {
+        width: 24px; // Match icon size from the image
+        height: 24px;
+        margin-right: 10px;
+        // Set background images for icons here
+      }
+
+      .dashboard-icon {
+        background-image: url("/assets/dashboard-icon.svg");
+      }
+      // Define other icons similarly
+    }
+  }
+}
+
+.logout {
+  margin-left: 1rem;
+}
+
+h5 {
+  color: #cacaca;
+  font-weight: 400;
+  margin-left: 2rem;
+}

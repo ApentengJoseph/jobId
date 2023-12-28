@@ -1,0 +1,65 @@
+<div fxFlex>
+  <mat-sidenav-container>
+    <mat-sidenav
+      #sidenav
+      [mode]="isMobile ? 'over' : 'side'"
+      [opened]="!isMobile"
+      [disableClose]="!isMobile"
+      ngClass.gt-sm="has-border"
+    >
+      <mat-toolbar>
+        <span class="logo"
+          ><img src="../../assets/logo.png" alt="logo" />
+          <h3>JobId</h3></span
+        >
+        <div fxFlex></div>
+        <div>
+          <button mat-icon-button>
+            <mat-icon *ngIf="isSideNavOpen" (click)="closeSidenav()">arrow_back_ios</mat-icon>
+          </button>
+        </div>
+      </mat-toolbar>
+      <aside class="sidebar">
+        <ul class="nav">
+          <h5>TOOLS</h5>
+          <li class="nav-item" *ngFor="let item of menuItems" routerLinkActive="active" [routerLink]="item.route">
+            <a class="nav-link">
+              <mat-icon>{{ item.icon }}</mat-icon>
+              {{ item.name }}
+            </a>
+          </li>
+        </ul>
+        <div class="logout">
+          <mat-slide-toggle>Activity log</mat-slide-toggle>
+          <span style="display: flex; align-items: center"
+            ><mat-icon>logout</mat-icon>
+            <h5>Logout</h5></span
+          >
+        </div>
+      </aside>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar class="mat-elevation-z6">
+        <mat-icon *ngIf="!isSideNavOpen" (click)="openSidenav()">arrow_forward_ios</mat-icon>
+        <header class="header">
+          <div class="welcome-text">{{ title }}</div>
+          <div class="search-container">
+            <input type="text" placeholder="Search" class="search-bar" />
+          </div>
+          <button class="new-post-btn" [routerLink]="'job-board/create-job-form'">Create new post</button>
+          <button class="close-post-btn">Close post</button>
+          <div class="user-controls">
+            <button class="icon-btn"><mat-icon>apps</mat-icon></button>
+            <button class="icon-btn">
+              <img src="https://gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="Notifications" />
+            </button>
+            <button class="icon-btn">
+              <img src="https://gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="Profile" />
+            </button>
+          </div>
+        </header>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
