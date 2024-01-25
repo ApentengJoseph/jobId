@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Layer_2"
+   viewBox="0 0 1692.55 490.05"
+   version="1.1"
+   sodipodi:docname="jobpays_white.svg"
+   width="1692.55"
+   height="490.04999"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview36"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.64326116"
+     inkscape:cx="941.29731"
+     inkscape:cy="275.1604"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g32" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1{letter-spacing:-.03em;}.cls-2{fill:#008cfe;}.cls-3{letter-spacing:-.02em;}.cls-4{letter-spacing:0em;}.cls-5{letter-spacing:-.02em;}.cls-6{fill:#191919;font-family:DMSans-SemiBold, 'DM Sans';font-size:365.81px;font-weight:600;}</style>
+  </defs>
+  <g
+     id="Layer_1-2"
+     transform="scale(0.89250056,0.88669253)">
+    <g
+       id="g32">
+      <g
+         id="g18"
+         style="fill:#ffffff;fill-opacity:1">
+        <path
+           class="cls-2"
+           d="M 177.64,548.8 0,272.47 177.64,0 355.28,272.47 Z M 30.03,272.57 177.63,502.18 325.23,272.57 177.64,46.17 Z"
+           id="path6"
+           style="fill:#ffffff;fill-opacity:1" />
+        <polygon
+           class="cls-2"
+           points="125.22,188.73 85.41,247.99 270.41,247.99 177.66,110.68 162.65,133.03 145.69,121.63 177.62,74.11 308.86,268.43 47.06,268.43 108.26,177.34 "
+           id="polygon8"
+           style="fill:#ffffff;fill-opacity:1" />
+        <path
+           class="cls-2"
+           d="M 203.36,379.59 H 117.34 L 46.94,275.98 h 261.27 l -42.74,67.37 -62.11,36.23 z m -75.19,-20.43 h 69.67 l 53.05,-30.95 20.17,-31.8 H 85.53 l 42.63,62.74 z"
+           id="path10"
+           style="fill:#ffffff;fill-opacity:1" />
+        <rect
+           class="cls-2"
+           x="127.51"
+           y="353.39001"
+           width="20.43"
+           height="81.129997"
+           transform="rotate(-32.39,137.7033,393.91784)"
+           id="rect12"
+           style="fill:#ffffff;fill-opacity:1" />
+        <rect
+           class="cls-2"
+           x="165.10001"
+           y="443.32001"
+           width="20.43"
+           height="22.040001"
+           transform="rotate(-34.65,175.33105,454.35096)"
+           id="rect14"
+           style="fill:#ffffff;fill-opacity:1" />
+        <line
+           class="cls-2"
+           x1="109.41"
+           y1="193.95"
+           x2="98.019997"
+           y2="194.67999"
+           id="line16"
+           style="fill:#ffffff;fill-opacity:1" />
+      </g>
+      <text
+         class="cls-6"
+         transform="translate(418.2,380.85)"
+         id="text30"
+         style="fill:#ffffff;fill-opacity:1"><tspan
+           x="0"
+           y="0"
+           id="tspan20"
+           style="fill:#ffffff;fill-opacity:1">Job</tspan><tspan
+           class="cls-1"
+           x="651.13"
+           y="0"
+           id="tspan22"
+           style="fill:#ffffff;fill-opacity:1">P</tspan><tspan
+           class="cls-5"
+           x="861.09998"
+           y="0"
+           id="tspan24"
+           style="fill:#ffffff;fill-opacity:1">a</tspan><tspan
+           class="cls-3"
+           x="1064.85"
+           y="0"
+           id="tspan26"
+           style="fill:#ffffff;fill-opacity:1">y</tspan><tspan
+           class="cls-4"
+           x="1271.53"
+           y="0"
+           id="tspan28"
+           style="fill:#ffffff;fill-opacity:1">s</tspan></text>
+    </g>
+  </g>
+</svg>
