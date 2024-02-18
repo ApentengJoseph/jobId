@@ -6,7 +6,9 @@ const routes: Routes = [
   Shell.childRoutes([
     { path: 'job-board', loadChildren: () => import('./about/about.module').then((m) => m.AboutModule) },
   ]),
-  //Shell.childRoutes([{ path: 'candidate', loadChildren: () => import('./candidate/candidate.module').then((m) => m.CandidateModule) }]),
+  Shell.childRoutes([
+    { path: 'candidate', loadChildren: () => import('./candidate/candidate.module').then((m) => m.CandidateModule) },
+  ]),
   // Fallback when no prior route is matched
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

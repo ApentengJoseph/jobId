@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Create a new form</h2>
+<mat-dialog-content class="mat-typography">
+  <form>
+    <mat-form-field appearance="outline">
+      <mat-label>Form name</mat-label>
+      <input matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>What type og form are you creating</mat-label>
+      <mat-select>
+        <mat-option value="" selected></mat-option>
+        <mat-option value="volvo">General form</mat-option>
+        <mat-option value="saab">Survey form</mat-option>
+        <mat-option value="mercedes">Score card form</mat-option>
+        <mat-option value="audi">Assessment form</mat-option>
+        <mat-option value="audi">Event form</mat-option>
+        <mat-option value="audi">Contact Information form</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Create Job form</button>
+</mat-dialog-actions>

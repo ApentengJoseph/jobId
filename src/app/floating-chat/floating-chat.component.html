@@ -1,0 +1,566 @@
+<div class="floating-chat">
+  <div class="floating-chat-header">
+    <div class="chat-subheader-container">
+      <img src="../../assets/icons/wechat.png" alt="" class="header-icons" />
+      <span class="chat-text">Chat</span>
+    </div>
+    <div class="chat-subheader-container">
+      <img src="../../assets/icons/message-edit.png" alt="" class="header-icons" />
+      <img src="./assets/icons/arrow-down.png" alt="" class="header-icons" (click)="toggleFloatingchat()" />
+    </div>
+  </div>
+
+  <div class="search-container" style="margin-top: 8px">
+    <div class="textbox" style="position: relative">
+      <img src="./assets/icons/search-normal-black.png" alt="" class="icon" />
+      <input placeholder="Search" type="search" class="search-input" />
+    </div>
+  </div>
+  <div
+    class="chat-username"
+    style="display: flex; flex-direction: column; justify-content: center; align-items: center"
+    *ngIf="(connections ?? []).length < 1 || (channels ?? []).length < 1"
+  >
+    Your chats will show up here
+    <mat-spinner [color]="'#07c0ea'" style="height: 30px; width: 30px"></mat-spinner>
+  </div>
+  <div class="chat-panel-container">
+    <div class="chat-panel" *ngFor="let connect of connections">
+      <div style="display: flex; gap: 8px; align-items: flex-start">
+        <div class="initials">{{ getInitials(connect?.username ?? '') }}</div>
+        <div class="column">
+          <div class="row">
+            <span class="chat-username">{{ connect?.username ?? '' | titlecase }}</span>
+            <div *ngIf="connect.isTyping" class="typing-base">
+              <span class="typing-user"> {{ '' }}</span>
+              <span class="typing-container">
+                <div class="is-typing">is typing</div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+              </span>
+            </div>
+          </div>
+          <span
+            *ngIf="(connect?.messages ?? []).length > 0"
+            class="chat-message"
+            [innerHTML]="connect.messages[connect.messages.length - 1].text"
+          >
+          </span>
+        </div>
+      </div>
+
+      <div class="column chat-time-col">
+        <span class="chat-time" *ngIf="(connect?.messages ?? []).length > 0">{{
+          connect.messages[connect.messages.length - 1].createdAt | date : 'shortTime'
+        }}</span>
+        <div *ngIf="(connect.unRead ?? 0) > 0" class="chat-badge">
+          {{ connect.unRead }}
+        </div>
+      </div>
+    </div>
+    <!-- <div
+      class="chat-panel"
+      *ngFor="let channel of channels"
+    >
+      <div style="display: flex; gap: 8px; align-items: flex-start">
+        <div class="initials">{{ getChannelInitials(channel.name) }}</div>
+        <div class="column">
+          <span class="chat-username">{{ channel.name }}</span>
+          <span
+            *ngIf="(channel.messages ?? []).length > 0"
+            class="chat-message"
+            [innerHTML]="
+              (channel.messages ?? [])[(channel.messages ?? []).length - 1].text
+            "
+          >
+          </span>
+        </div>
+
+        <div class="column chat-time-col">
+          <span *ngIf="(channel.messages ?? []).length > 0" class="chat-time">{{
+            (channel.messages ?? [])[(channel.messages ?? []).length - 1]
+              .createdAt | date : "shortTime"
+          }}</span>
+          <div *ngIf="(channel.unRead ?? 0) > 0" class="chat-badge">
+            {{ channel.unRead }}
+          </div>
+        </div>
+        <div
+          *ngIf="channel.typingUser?.isTyping"
+          style="display: flex; padding-left: -20px"
+        >
+          <span class="typing-user">
+            {{ channel.typingUser?.username | titlecase }}</span
+          >
+          <span class="typing-container">
+            <div class="is-typing">is typing</div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+          </span>
+        </div>
+      </div>
+    </div> -->
+  </div>
+
+  <div class="floating-chatbox-container">
+    <!-- connections -->
+    <!-- <div *ngFor="let item of openedConnectBoxes; let i = index">
+      <div class="floating-chatbox">
+        <div class="floating-chat-header">
+          <div class="floating-chat-header-title">
+            <div class="chat-subheader-container">
+              <div>
+                <div class="initials">{{ getInitials(item.username) }}</div>
+              </div>
+              <div class="chat-box-user">
+                <span class="chatbox-header-username">{{
+                  item.username | titlecase
+                }}</span>
+              </div>
+            </div>
+            <div class="chat-subheader-container">
+              <img src="./assets/icons/maximize.png" alt="" />
+              <img
+                src="./assets/icons/close.png"
+                alt=""
+                (click)="closeChatBox(item.id)"
+              />
+            </div>
+          </div>
+          <div *ngIf="item.isTyping" class="typing-base">
+            <span class="typing-user"> {{ "" }}</span>
+            <span class="typing-container">
+              <div class="is-typing">is typing</div>
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+            </span>
+          </div>
+        </div>
+        <div class="floating-chatbox-body" #scrollContainer>
+          <ng-container *ngFor="let message of item.messages">
+            <div class="row" *ngIf="message?.user?.id !== this.user.id">
+              <div>
+                <div class="initials">
+                  {{ getInitials(message?.user?.username ?? "") }}
+                </div>
+              </div>
+              <div class="chatbox-message-container sender">
+                <div class="chatbox-userinfo">
+                  <span class="chatbox-username">
+                    {{ message?.user?.username | titlecase }}</span
+                  >
+                  <span class="chat-date">{{
+                    message.createdAt | date : "shortTime"
+                  }}</span>
+                </div>
+                <span class="chatbox-message" [innerHTML]="message.text">
+                </span>
+              </div>
+            </div>
+            <div class="reverse-row" *ngIf="message?.user?.id === this.user.id">
+              <div>
+                <div class="initials">
+                  {{ getInitials(message?.user?.username ?? "") }}
+                </div>
+              </div>
+              <div class="chatbox-message-container receiver">
+                <div class="chatbox-userinfo-reversed">
+                  <span class="chatbox-username">{{
+                    message?.user?.username | titlecase
+                  }}</span>
+                  <span class="chat-date">{{
+                    message.createdAt | date : "shortTime"
+                  }}</span>
+                </div>
+                <span
+                  class="chatbox-message reversed"
+                  [innerHTML]="message.text"
+                >
+                </span>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <div class="floating-chatbox-footer">
+          <div style="float: left; width: 100%">
+            <div [ngClass]="item.showEmojiPicker ? 'show-emoji' : 'hide-emoji'">
+              <emoji-mart
+                (emojiClick)="handleConnectionEmojiSelection($event, item)"
+                [darkMode]="false"
+                [showPreview]="true"
+                [useButton]="true"
+                [color]="'#07c0ea'"
+                [skin]="4"
+                [style]="{
+                  position: 'absolute',
+                  bottom: '6rem',
+                  'z-index': '1000',
+                  width: '307px'
+                }"
+                set="apple"
+              ></emoji-mart>
+            </div>
+            <div
+              class="audio-recorder-track-container"
+              *ngIf="item.isRecording && item.blobUrl === undefined"
+            >
+              <div>Recording {{ recordedTime }}</div>
+              <span
+                (click)="stopConnectionRecording(item)"
+                class="stop-recording-button"
+                >Stop Recording</span
+              >
+            </div>
+            <div
+              *ngIf="(item.selectedFiles ?? []).length > 0"
+              style="
+                display: grid;
+                gap: 10px;
+                grid-template-columns: auto auto auto auto;
+              "
+            >
+              <app-file-preview
+                *ngFor="let file of item.selectedFiles"
+                [file]="file"
+                [blobUrl]="item.blobUrl"
+                (removeFileFromList)="removeConnectionFile($event, item)"
+                [progress]="item.progress"
+                [width]="'18rem'"
+              ></app-file-preview>
+            </div>
+            <div
+              #connectiontextarea
+              data-placeholder="Type your message..."
+              contenteditable="true"
+              (blur)="onConnectionBlur($event, item)"
+              (input)="onConnectionInput($event, item)"
+              (keydown)="onKeyDown($event, item, true)"
+              class="editable-div textarea"
+            ></div>
+          </div>
+          <mat-menu
+            class="mat-menu-content menu-content"
+            #menuRef="matMenu"
+            x-position="after"
+            y-position="above"
+            [overlapTrigger]="false"
+          >
+            <div class="mentions-wrapper">
+              <div
+                class="users-list"
+                *ngFor="let member of matchingMembers"
+                (click)="
+                  replaceConnectionString(
+                    member.FirstName,
+                    member.LastName,
+                    item
+                  )
+                "
+              >
+                <div class="initials-inner">
+                  {{
+                    getMatchinInitials(member.FirstName, member.LastName)
+                      | uppercase
+                  }}
+                </div>
+                <div class="user-col">
+                  <span class="user-name"
+                    >{{ member.FirstName | titlecase }}
+                    {{ member.LastName | titlecase }}</span
+                  >
+                  <span class="user-email">{{ member.Email }}</span>
+                </div>
+              </div>
+            </div>
+          </mat-menu>
+          <hr class="footer-divider" />
+          <div class="footer-toolbar">
+            <img
+              (click)="startConnectionRecording(item)"
+              src="./assets/icons/microphone-2.png"
+              alt=""
+              style="cursor: pointer"
+            />
+            <img
+              src="./assets/icons/link-2.png"
+              alt=""
+              style="cursor: pointer"
+              (click)="showHyperlinkControlDialog(true, item)"
+            />
+            <img
+              src="./assets/icons/tag.png"
+              alt=""
+              style="cursor: pointer"
+              [matMenuTriggerFor]="menuRef"
+              (click)="openMentionsList()"
+            />
+            <div
+              (click)="fileInput.click()"
+              style="position: relative; top: 4px"
+            >
+              <input
+                style="display: none"
+                #fileInput
+                type="file"
+                hidden
+                (change)="connectionFileSelected($event, item)"
+              />
+              <img
+                src="./assets/icons/gallery.png"
+                alt="Icon"
+                style="cursor: pointer"
+              />
+            </div>
+            <img
+              src="./assets/icons/emoji.png"
+              alt=""
+              (click)="openConnectionEmojiModal(item)"
+            />
+            <img
+              class="send-btn"
+              src="./assets/icons/send.png"
+              alt=""
+              (click)="sendPrivateMessage(item)"
+            />
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- circles -->
+    <!-- <div *ngFor="let item of openedBoxes; let i = index">
+      <div class="floating-chatbox">
+        <div class="floating-chat-header">
+          <div class="floating-chat-header-title">
+            <div class="chat-subheader-container">
+              <div>
+                <div class="initials">{{ getChannelInitials(item.name) }}</div>
+              </div>
+              <div
+                class="chat-box-user"
+                style="display: flex; flex-direction: column"
+              >
+                <span class="chatbox-header-username">{{
+                  item.name | titlecase
+                }}</span>
+              </div>
+            </div>
+            <div class="chat-subheader-container">
+              <img src="./assets/icons/maximize.png" alt="" />
+              <img
+                src="./assets/icons/close.png"
+                alt=""
+                (click)="closeChatBox(item.id ?? '')"
+              />
+            </div>
+          </div>
+          <div
+            *ngIf="item.typingUser?.isTyping"
+            style="display: flex; padding-left: 10px; padding-bottom: 10px"
+          >
+            <span class="typing-user">
+              {{ item.typingUser?.username | titlecase }}</span
+            >
+            <span class="typing-container">
+              <div class="is-typing">is typing</div>
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+            </span>
+          </div>
+        </div>
+
+        <div class="floating-chatbox-body" #scrollContainer>
+          <ng-container *ngFor="let message of item.messages ?? []">
+            <div class="row" *ngIf="message?.user?.email !== this.user.email">
+              <div>
+                <div class="initials">
+                  {{ getInitials(message?.user?.username ?? "") }}
+                </div>
+              </div>
+              <div class="chatbox-message-container sender">
+                <div class="chatbox-userinfo">
+                  <span class="chatbox-username">
+                    {{ message?.user?.username | titlecase }}</span
+                  >
+                  <span class="chat-date">{{
+                    message.createdAt | date : "shortTime"
+                  }}</span>
+                </div>
+                <span class="chatbox-message" [innerHTML]="message.text">
+                </span>
+              </div>
+            </div>
+            <div
+              class="reverse-row"
+              *ngIf="message?.user?.email === this.user.email"
+            >
+              <div>
+                <div class="initials">
+                  {{ getInitials(message?.user?.username ?? "") }}
+                </div>
+              </div>
+              <div class="chatbox-message-container receiver">
+                <div class="chatbox-userinfo-reversed">
+                  <span class="chatbox-username">{{
+                    message?.user?.username | titlecase
+                  }}</span>
+                  <span class="chat-date">{{
+                    message.createdAt | date : "shortTime"
+                  }}</span>
+                </div>
+                <span
+                  class="chatbox-message reversed"
+                  [innerHTML]="message.text"
+                >
+                </span>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <div class="floating-chatbox-footer">
+          <div style="float: left; width: 100%">
+            <div [ngClass]="item.showEmojiPicker ? 'show-emoji' : 'hide-emoji'">
+              <emoji-mart
+                (emojiClick)="handleCircleEmojiSelection($event, item)"
+                [darkMode]="false"
+                [showPreview]="true"
+                [useButton]="true"
+                [color]="'#07c0ea'"
+                [skin]="4"
+                [style]="{
+                  position: 'absolute',
+                  bottom: '6rem',
+                  'z-index': '1000',
+                  width: '307px'
+                }"
+                set="apple"
+              ></emoji-mart>
+            </div>
+            <div
+              class="audio-recorder-track-container"
+              *ngIf="item.isRecording && item.blobUrl === undefined"
+            >
+              <div>Recording {{ recordedTime }}</div>
+              <span
+                (click)="stopCircleRecording(item)"
+                class="stop-recording-button"
+                >Stop Recording</span
+              >
+            </div>
+            <div
+              *ngIf="(item.selectedFiles ?? []).length > 0"
+              style="
+                display: grid;
+                gap: 10px;
+                grid-template-columns: auto auto auto auto;
+              "
+            >
+              <app-file-preview
+                *ngFor="let file of item.selectedFiles"
+                [file]="file"
+                [blobUrl]="item.blobUrl"
+                (removeFileFromList)="removeCircleFile($event, item)"
+                [progress]="item.progress"
+                [width]="'18rem'"
+              ></app-file-preview>
+            </div>
+            <div
+              #circletextarea
+              data-placeholder="Type your message..."
+              contenteditable
+              (blur)="onCircleBlur($event, item)"
+              (input)="onCircleInput($event, item)"
+              (keydown)="onKeyDown($event, item, false)"
+              class="editable-div textarea"
+            ></div>
+          </div>
+          <mat-menu
+            class="mat-menu-content menu-content"
+            #menuRef="matMenu"
+            x-position="after"
+            y-position="above"
+            [overlapTrigger]="false"
+          >
+            <div class="mentions-wrapper">
+              <div
+                class="users-list"
+                *ngFor="let member of matchingMembers"
+                (click)="
+                  replaceCircleString(member.FirstName, member.LastName, item)
+                "
+              >
+                <div class="initials-inner">
+                  {{
+                    getMatchinInitials(member.FirstName, member.LastName)
+                      | uppercase
+                  }}
+                </div>
+                <div class="user-col">
+                  <span class="user-name"
+                    >{{ member.FirstName | titlecase }}
+                    {{ member.LastName | titlecase }}</span
+                  >
+                  <span class="user-email">{{ member.Email }}</span>
+                </div>
+              </div>
+            </div>
+          </mat-menu>
+          <hr class="footer-divider" />
+          <div class="footer-toolbar">
+            <img
+              (click)="startCircleRecording(item)"
+              src="./assets/icons/microphone-2.png"
+              alt=""
+              style="cursor: pointer"
+            />
+            <img
+              src="./assets/icons/link-2.png"
+              alt=""
+              style="cursor: pointer"
+              (click)="showHyperlinkControlDialog(false, item)"
+            />
+            <img
+              src="./assets/icons/tag.png"
+              alt=""
+              style="cursor: pointer"
+              [matMenuTriggerFor]="menuRef"
+              (click)="openMentionsList()"
+            />
+            <div
+              (click)="fileInput.click()"
+              style="position: relative; top: 4px"
+            >
+              <input
+                style="display: none"
+                #fileInput
+                type="file"
+                hidden
+                (change)="circleFileSelected($event, item)"
+              />
+              <img
+                src="./assets/icons/gallery.png"
+                alt="Icon"
+                style="cursor: pointer"
+              />
+            </div>
+            <img
+              src="./assets/icons/emoji.png"
+              alt=""
+              (click)="openCircleEmojiModal(item)"
+            />
+            <img
+              class="send-btn"
+              src="./assets/icons/send.png"
+              alt=""
+              (click)="sendCircleMessage(item)"
+            />
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

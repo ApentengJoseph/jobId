@@ -6,10 +6,7 @@ import { Shell } from '@app/shell/shell.service';
 import { CandidateComponent } from './candidate.component';
 
 const routes: Routes = [
-  Shell.childRoutes([
-    { path: '', redirectTo: '/candidate', pathMatch: 'full' },
-    { path: 'candidate', component: CandidateComponent, data: { title: marker('Candidate') } },
-  ]),
+  Shell.childRoutes([{ path: '', component: CandidateComponent, data: { title: marker('Candidate') } }]),
 ];
 
 @NgModule({

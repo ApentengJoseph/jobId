@@ -2,11 +2,13 @@
   <mat-card>
     <mat-card-content>
       <div class="button">
-        <button class="job-post-button" (click)="navigateToNext()" [disabled]="isLastStep()">Create job post</button>
+        <button class="job-post-button" (click)="navigateToNext()" [disabled]="isLastStep()">
+          <img style="margin-right: 0.5rem" src="../../../../assets/arrow-square-left.png" alt="icon" />Create job post
+        </button>
       </div>
 
       <div class="job-post-creation">
-        <h2>Job Info</h2>
+        <h2 style="font-size: 32px; font-weight: 500">Job Info</h2>
         <div class="progress-bar" cdkStepper #stepper>
           <div class="step" [ngClass]="0 === selectedIndex ? 'step-active' : ''"></div>
           <div class="line"></div>
@@ -30,18 +32,463 @@
         </ul>
       </div>
 
-      <div class="job-info">
+      <div class="job-info" *ngIf="selectedIndex === 0">
         <p>
           Inform potential candidates about the position's title, location, and requirements. And welcome applicants
           from all backgrounds, regardless of race, color, religion, gender identity or expression, sexual orientation,
           national origin, genetics, disability, age, or veteran status. We are committed to providing a fair and
           unbiased recruitment process.
         </p>
+        <button class="close-button">&times;</button>
       </div>
+      <!-- job-details-form.component.html -->
+      <div class="content" *ngIf="selectedIndex === 0">
+        <h3
+          style="text-align: start; margin-left: 4rem; font-size: 20px; font-weight: 600; padding: 1rem; color: #596780"
+        >
+          Job Details
+        </h3>
+        <hr class="new1" />
+        <div class="job-details-container">
+          <form class="job-details-form">
+            <div class="group-one" style="margin-top: 3rem">
+              <div class="form-group">
+                <label for="jobRole">Job Role</label>
+                <select id="jobRole" class="form-control">
+                  <option value="financeSpecialist">Finance Specialist</option>
+                  <!-- More options -->
+                </select>
+              </div>
 
+              <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department" class="form-control">
+                  <option value="finance">Finance</option>
+                  <!-- More options -->
+                </select>
+              </div>
+            </div>
+
+            <div class="group-one" style="margin-top: 1.5rem">
+              <div class="form-group">
+                <label for="department">Location</label>
+                <select id="department" class="form-control">
+                  <option value="finance">Netherland</option>
+                  <!-- More options -->
+                </select>
+              </div>
+            </div>
+
+            <hr class="new2" />
+
+            <div class="group-one">
+              <div class="form-group">
+                <label for="jobRole">Job type</label>
+                <select id="jobRole" class="form-control">
+                  <option value="financeSpecialist">Onsite</option>
+                  <!-- More options -->
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="department">Contract type</label>
+                <select id="department" class="form-control">
+                  <option value="finance">Full time</option>
+                  <!-- More options -->
+                </select>
+              </div>
+            </div>
+
+            <div class="group-one" style="margin-top: 1.5rem">
+              <div class="form-group">
+                <label for="jobRole">Experience level</label>
+                <select id="jobRole" class="form-control">
+                  <option value="financeSpecialist">Entry level</option>
+                  <!-- More options -->
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="department">Education Level</label>
+                <select id="department" class="form-control">
+                  <option value="finance">Bachelors</option>
+                  <!-- More options -->
+                </select>
+              </div>
+            </div>
+
+            <div class="group-one" style="margin-top: 1.5rem">
+              <div class="form-group">
+                <label for="department">Keywords</label>
+                <div class="keyword-container">
+                  <div class="keyword-tag" *ngFor="let keyword of keywords">
+                    {{ keyword }}
+                    <span class="remove-tag" (click)="removeKeyword(keyword)">&times;</span>
+                  </div>
+                  <div class="keyword-tag add-keyword" (click)="addKeyword()">Add <span class="plus">+</span></div>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 3rem">
+                <label for="department">Company Industry</label>
+                <select id="department" class="form-control">
+                  <option value="finance">Logistics</option>
+                  <!-- More options -->
+                </select>
+              </div>
+            </div>
+            <div class="button-container" style="margin-top: 1.5rem">
+              <button class="action-button add-image">
+                <span class="icon">📷</span>
+                Add image
+              </button>
+              <button class="action-button add-video">
+                <span class="icon">📹</span>
+                Add video
+              </button>
+              <button class="action-button add-template">
+                <span class="icon">📄</span>
+                Add template
+              </button>
+            </div>
+            <div class="job-description-container">
+              <!-- job-header.component.html -->
+              <div class="job-header">
+                <h1 class="job-title">Job description</h1>
+
+                <div class="input-group">
+                  <span style="width: 65%; position: relative"
+                    ><input type="text" class="ai-input" placeholder="Input AI prompt" />
+                    <div class="ai-icon"></div
+                  ></span>
+                  <button class="ai-generate-btn">
+                    <img style="margin-right: 0.5rem" src="../../../../assets/magicpen.png" alt="ai" />AI generate job
+                    description
+                  </button>
+                </div>
+              </div>
+
+              <div class="content">
+                <div class="info-banner">
+                  <div class="info-icon">
+                    <img src="../../../../assets/Vector (3).png" alt="Info Icon" />
+                  </div>
+                  <div class="info-text">
+                    <p>
+                      Provide a comprehensive and concise description of the job role, responsibilities, and
+                      qualifications. Highlight key aspects that make the position inclusive and emphasize equal
+                      opportunities for all candidates.
+                    </p>
+                  </div>
+                  <div class="close-button">&times;</div>
+                </div>
+
+                <div class="description-form">
+                  <label for="jobDescription">Description</label>
+                  <textarea
+                    id="jobDescription"
+                    rows="15"
+                    placeholder="Enter the Job description the candidate would be required to do on a day to day"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
       <div>
-        <button mat-button *ngIf="showPreviousButton()" (click)="navigateToPrevious()">Previous</button>
-        <button mat-button *ngIf="showNextButton()" (click)="navigateToNext()">Save & Continue</button>
+        <div *ngIf="selectedIndex === 1" style="background-color: #59678003">
+          <div class="screening-question">
+            <span>This step is optional, create screening questions for your job post if needed</span>
+            <button class="close-button">&times;</button>
+          </div>
+          <header class="custom-header">
+            <h1>Customize pre-screening question</h1>
+            <div class="header-buttons">
+              <button class="button-i outlined">View desktop</button>
+              <button class="button-normal">View mobile</button>
+            </div>
+          </header>
+          <div class="content-s">
+            <div class="screening-questions">
+              <h2 style="text-align: start; margin-left: 1rem; color: #596780 !important">Screening questions</h2>
+              <div class="question">
+                <hr class="new2-i" />
+                <div class="card">
+                  <label for="experienceInput">How many years of experience do you have with [skill]</label>
+                  <input type="text" id="experienceInput" placeholder="Short answer" />
+                  <hr class="new2-i" />
+                  <div class="actions">
+                    <span class="icon">
+                      <img src="../../../../assets/copy.png" alt="copy" />
+                      <img src="../../../../assets/trash.png" alt="copy" />
+                    </span>
+                    <label class="checkbox-container">
+                      <input type="checkbox" />
+                      Mandatory field
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="question">
+                <div class="card">
+                  <label for="experienceInput">What country do you reside in?</label>
+                  <input type="text" id="experienceInput" placeholder="Short answer" />
+                  <hr class="new2-i" />
+                  <div class="actions">
+                    <span class="icon">
+                      <img src="../../../../assets/copy.png" alt="copy" />
+                      <img src="../../../../assets/trash.png" alt="copy" />
+                    </span>
+                    <label class="checkbox-container">
+                      <input type="checkbox" />
+                      Mandatory field
+                    </label>
+                  </div>
+                </div>
+                <hr class="new2-i" />
+              </div>
+              <div class="question">
+                <div class="card">
+                  <label for="experienceInput">Are you a muslim?</label>
+                  <input type="text" id="experienceInput" placeholder="Short answer" />
+                  <!-- <hr class="new2" />
+                  <div class="actions">
+                    <span class="icon">
+                      <img src="../../../../assets/copy.png" alt="copy">
+                      <img src="../../../../assets/trash.png" alt="copy">
+                    </span>
+                    <label class="checkbox-container">
+                      <input type="checkbox">
+                      Mandatory field
+                    </label>
+                  </div> -->
+                </div>
+              </div>
+              <div class="tags-container">
+                <span class="tag">Education</span>
+                <span class="tag highlighted">Work authorisation</span>
+                <span class="tag">Salary</span>
+                <span class="tag">Work experience</span>
+                <span class="tag">Language</span>
+                <span class="tag">Visa status</span>
+                <span class="tag">Willingness to travel</span>
+                <span class="tag">Relocation</span>
+                <span class="tag">Cover letter</span>
+                <span class="tag">Driver's license</span>
+              </div>
+            </div>
+
+            <div class="visa">
+              <div class="cards">
+                <div class="browser-mockup">
+                  <div class="circle red"></div>
+                  <div class="circle yellow"></div>
+                  <div class="circle green"></div>
+                </div>
+                <div class="contents">
+                  <img src="../../../../assets/Rectangle 6324.png" alt="Background" class="background-image" />
+                  <p class="mission-statement">
+                    We actively seek to create a diverse and inclusive workplace where individuals are celebrated for
+                    their unique perspectives.
+                  </p>
+                  <h2 class="job-title">Finance Specialist</h2>
+                  <div class="input-group-i">
+                    <label for="experience"
+                      ><small style="color: red; margin-right: 0.5rem; font-size: 18px">*</small>How many years of
+                      experience do you have with Microsoft Excel</label
+                    >
+                    <input type="text" id="experience" placeholder="" />
+                  </div>
+                  <hr style="margin-top: 3rem" class="new2-i" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="selectedIndex === 2">
+          <div class="screening-question" style="background: rgba(236, 236, 236, 0.836)">
+            <span>Create the application for this position.</span>
+            <button class="close-button">&times;</button>
+          </div>
+          <div class="content-container" style="margin-top: 1rem">
+            <div class="bullet-point"></div>
+            <div class="text-content">
+              <h2>Get the most quality candidates quickly</h2>
+              <p>these actions are our top performers.</p>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="card-item">
+              <div class="cardss">
+                <div class="icons">
+                  <!-- Replace with actual icons or images -->
+                  <img src="../../../../assets/facebook.png" style="width: 40px; height: 40px" alt="facebook" />
+                </div>
+                <h3>Socials</h3>
+                <p>Attract more candidates by posting on facebook, instagram and WhatsApp business</p>
+                <button class="connect-button">Connect to socials</button>
+              </div>
+              <div class="cardss">
+                <div class="icons">
+                  <!-- Replace with actual icons or images -->
+                  <img src="../../../../assets/facebook.png" style="width: 40px; height: 40px" alt="facebook" />
+                </div>
+                <h3>Socials</h3>
+                <p>Attract more candidates by posting on facebook, instagram and WhatsApp business</p>
+                <button class="connect-button">Connect to socials</button>
+              </div>
+              <div class="cardss">
+                <div class="icons">
+                  <!-- Replace with actual icons or images -->
+                  <img src="../../../../assets/facebook.png" style="width: 40px; height: 40px" alt="facebook" />
+                </div>
+                <h3>Socials</h3>
+                <p>Attract more candidates by posting on facebook, instagram and WhatsApp business</p>
+                <button class="connect-button">Connect to socials</button>
+              </div>
+            </div>
+          </div>
+          <div class="content-container" style="margin-top: 1rem">
+            <div class="bullet-point"></div>
+            <div class="text-content">
+              <h2>Additional actions to make your hiring seamless</h2>
+              <p>these actions would make your hiring task easy and fast.</p>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="card-item">
+              <div class="cardss">
+                <div class="icons">
+                  <!-- Replace with actual icons or images -->
+                  <img
+                    src="../../../../assets/carbon_application-web.png"
+                    style="width: 40px; height: 40px"
+                    alt="facebook"
+                  />
+                  <h3>Connect website</h3>
+                </div>
+                <p>Embed your jobs on your website, your career page would be updated automatically</p>
+                <span>Connect</span>
+              </div>
+              <div class="cardss">
+                <div class="icons">
+                  <!-- Replace with actual icons or images -->
+                  <img
+                    src="../../../../assets/carbon_model-reference.png"
+                    style="width: 40px; height: 40px"
+                    alt="facebook"
+                  />
+                  <h3>Referrals</h3>
+                </div>
+                <p>Send internal company mails inviting employees to refer candidates for rewards</p>
+                <span>Set up referrals</span>
+              </div>
+              <div class="cardss">
+                <div class="icons">
+                  <!-- Replace with actual icons or images -->
+                  <img src="../../../../assets/directbox-notif.png" style="width: 40px; height: 40px" alt="facebook" />
+                  <h3>Add emails</h3>
+                </div>
+                <p>Embed your jobs on your website, your career page would be updated automatically</p>
+                <span>Add email</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="selectedIndex === 3">
+          <div class="screening-question">
+            <span>Invite collaborators</span>
+            <button class="close-button">&times;</button>
+          </div>
+          <div class="collaborators">
+            <div class="collab">
+              <div class="collaborators-card">
+                <div class="header">
+                  <h2>Collaborators</h2>
+                </div>
+                <div class="content-er">
+                  <img src="../../../../assets/images/avatar-2.jpg" alt="Stanley George" class="profile-image" />
+                  <div class="info">
+                    <h3>Stanley George</h3>
+                    <p>s.george@company.com</p>
+                  </div>
+                  <span class="role">SuperAdmin</span>
+                </div>
+                <button class="invite-button">Invite collaborators</button>
+              </div>
+              <div class="modal">
+                <div class="modal-header">
+                  <h2>Assign this role</h2>
+                  <button class="close-button">&times;</button>
+                </div>
+                <p>Select one or multiple employees to assign to this role <strong>"Senior Design Lead"</strong></p>
+                <div class="search-box">
+                  <input type="text" placeholder="Search for an individual or team" />
+                  <button class="search-button">&#128269;</button>
+                </div>
+                <ul class="user-list">
+                  <!-- Repeat for each user -->
+                  <li class="user">
+                    <img src="../../../../assets/images/Profile.png" alt="User Name" class="user-image" />
+                    <div class="user-info">
+                      <h3>Jennifer Lopez</h3>
+                      <p>Product Designer, Integrations</p>
+                    </div>
+                    <div class="selection-indicator"></div>
+                  </li>
+                  <li class="user">
+                    <img src="../../../../assets/images/Profile.png" alt="User Name" class="user-image" />
+                    <div class="user-info">
+                      <h3>Jennifer Lopez</h3>
+                      <p>Product Designer, Integrations</p>
+                    </div>
+                    <div class="selection-indicator"></div>
+                  </li>
+                  <li class="user">
+                    <img src="../../../../assets/images/Profile.png" alt="User Name" class="user-image" />
+                    <div class="user-info">
+                      <h3>Jennifer Lopez</h3>
+                      <p>Product Designer, Integrations</p>
+                    </div>
+                    <div class="selection-indicator"></div>
+                  </li>
+                  <li class="user">
+                    <img src="../../../../assets/images/Profile.png" alt="User Name" class="user-image" />
+                    <div class="user-info">
+                      <h3>Jennifer Lopez</h3>
+                      <p>Product Designer, Integrations</p>
+                    </div>
+                    <div class="selection-indicator"></div>
+                  </li>
+                  <!-- ... other users ... -->
+                </ul>
+                <button class="assign-button">Assign</button>
+                <div class="modal-footer">
+                  <button class="cancel-button">Cancel</button>
+                  <button class="create-button">Create role</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          mat-button
+          class="previous-btn"
+          *ngIf="showPreviousButton()"
+          style="margin-top: 3rem"
+          (click)="navigateToPrevious()"
+        >
+          Previous
+        </button>
+        <button
+          mat-button
+          *ngIf="showNextButton()"
+          style="margin-top: 3rem"
+          class="save-post-btn"
+          (click)="navigateToNext()"
+        >
+          Save & Continue
+        </button>
       </div>
     </mat-card-content>
   </mat-card>

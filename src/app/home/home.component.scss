@@ -7,6 +7,7 @@
   padding: 1em;
   gap: 1rem;
   background: #fbfbfb;
+  position: relative;
 }
 .main-content {
   width: 75%;
@@ -61,12 +62,39 @@ mat-card-content {
   margin-top: 1rem;
 }
 
-.rate {
+.rate-1 {
+  display: flex;
+  background: #f8bdcf;
+  align-items: center;
+  justify-content: flex-end;
+  width: 35%;
+  height: 3.5rem;
+  border-radius: 10px 60px 60px 0; /* top-left, top-right, bottom-right, bottom-left */
+}
+.rate-2 {
+  display: flex;
+  background: #f8bdcf;
+  align-items: center;
+  justify-content: flex-end;
+  width: 15%;
+  height: 3.5rem;
+  border-radius: 10px 60px 60px 0; /* top-left, top-right, bottom-right, bottom-left */
+}
+.rate-3 {
   display: flex;
   background: #f8bdcf;
   align-items: center;
   justify-content: flex-end;
   width: 55%;
+  height: 3.5rem;
+  border-radius: 10px 60px 60px 0; /* top-left, top-right, bottom-right, bottom-left */
+}
+.rate-4 {
+  display: flex;
+  background: #f8bdcf;
+  align-items: center;
+  justify-content: flex-end;
+  width: 35%;
   height: 3.5rem;
   border-radius: 10px 60px 60px 0; /* top-left, top-right, bottom-right, bottom-left */
 }
@@ -313,7 +341,7 @@ mat-card-content {
 .lane {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   height: 25%; /* Each lane takes up 1/4 of the track height */
   border-bottom: 2px solid #fff; /* Dashed lines to separate lanes */
   padding-left: 20px; /* Space for the icons */
@@ -330,7 +358,7 @@ mat-card-content {
 
 .finish-line {
   position: absolute;
-  right: 0;
+  right: 56px;
   top: 0;
   width: 20px;
   height: 100%;

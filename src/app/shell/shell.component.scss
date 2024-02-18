@@ -138,24 +138,38 @@ img {
   flex-direction: column;
   justify-content: space-around;
 
+  .float-chat-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+  }
+
   .nav-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: relative;
     cursor: pointer;
     margin-top: 2rem;
 
     &.active {
-      background-color: #fce4ec; // Use the exact color from the image
+      background-color: lighten($color: #ffb2ca, $amount: 8); // Use the exact color from the image
+      span {
+        background-color: #ea3970;
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-      &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 5px;
-        background-color: #ec407a; // Use the exact color from the image
+      a {
+        color: #ea3970;
+      }
+
+      .img {
+        color: #ea3970 !important;
       }
     }
 

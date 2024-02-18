@@ -1,4 +1,4 @@
-<div fxFlex>
+<div fxFlex style="position: relative">
   <mat-sidenav-container>
     <mat-sidenav
       #sidenav
@@ -10,30 +10,55 @@
       <mat-toolbar>
         <span class="logo"
           ><img src="../../assets/logo.png" alt="logo" />
-          <h3>JobId</h3></span
+          <h3 style="color: #a80837; font-weight: bold">JobId</h3></span
         >
         <div fxFlex></div>
         <div>
           <button mat-icon-button>
-            <mat-icon *ngIf="isSideNavOpen" (click)="closeSidenav()">arrow_back_ios</mat-icon>
+            <img
+              *ngIf="isSideNavOpen"
+              (click)="closeSidenav()"
+              style="width: 20px; height: 20px"
+              src="../../assets/direaction left.png"
+              alt="arrow"
+            />
+            <!-- <mat-icon *ngIf="isSideNavOpen" (click)="closeSidenav()">arrow_back_ios</mat-icon> -->
           </button>
         </div>
       </mat-toolbar>
       <aside class="sidebar">
         <ul class="nav">
           <h5>TOOLS</h5>
-          <li class="nav-item" *ngFor="let item of menuItems" routerLinkActive="active" [routerLink]="item.route">
+          <li
+            class="nav-item"
+            *ngFor="let item of menuItems; let i = index"
+            routerLinkActive="active"
+            [routerLink]="item.route"
+          >
             <a class="nav-link">
-              <mat-icon>{{ item.icon }}</mat-icon>
+              <span style="margin-right: 1.3rem">
+                <img style="width: 25px; height: 25px" [src]="item.icon" alt="icon" />
+              </span>
               {{ item.name }}
             </a>
+            <img
+              class="img"
+              *ngIf="i !== 0"
+              src="../../assets/arrow-right.png"
+              style="width: 25px; height: 25px; margin-right: 1rem"
+              alt="arrow"
+            />
           </li>
         </ul>
         <div class="logout">
           <mat-slide-toggle>Activity log</mat-slide-toggle>
           <span style="display: flex; align-items: center"
-            ><mat-icon>logout</mat-icon>
-            <h5>Logout</h5></span
+            ><img
+              src="../../assets/login.png"
+              style="width: 25px; height: 25px; margin-right: 1.5rem"
+              alt="login-logo"
+            />
+            <h4>Logout</h4></span
           >
         </div>
       </aside>
@@ -60,6 +85,20 @@
         </header>
       </mat-toolbar>
       <router-outlet></router-outlet>
+      <!-- <div *ngIf="showChat && !showFloatingChat">
+        <span *ngIf="alertCount > 0" class="alert-count">{{ alertCount }}</span>
+        <img
+          class="float-chat-btn cursor-pointer"
+          src="../../assets/icons/float-chat.png"
+          alt=""
+          (click)="toggleFloatingchat(true)"
+        />
+      </div> -->
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
+<!-- <app-floating-chat
+  *ngIf="showFloatingChat"
+  (toggleChat)="toggleFloatingchat($event)"
+>
+</app-floating-chat> -->

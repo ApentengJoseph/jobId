@@ -1,0 +1,135 @@
+.templates-container {
+  color: #333;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.template-actions {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  align-items: start;
+  justify-content: center;
+  height: 100%;
+}
+
+.action-item {
+  text-align: center;
+  width: 18%;
+  height: 155px;
+  background-color: #fcfcfc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+.action-item-t {
+  text-align: center;
+  width: 15%;
+  height: 155px;
+  background-color: #f8f8f8;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.action-icon {
+  background: #f0f0f0; /* Replace with the actual background color */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px; /* Adjust as needed */
+  color: #333; /* Replace with the actual icon color */
+  margin-bottom: 4px;
+}
+
+.action-text {
+  font-size: 14px;
+  margin-top: 1rem;
+}
+
+.template-list {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  //align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  background-color: #fcfcfc;
+  height: 100%;
+}
+
+.list-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  margin-top: 2rem;
+  width: 100%;
+
+  .sort {
+    display: flex;
+    align-items: center;
+
+    p {
+      margin-right: 0.5rem;
+      color: #90a3bf;
+      font-weight: 200;
+    }
+
+    p.active {
+      color: #ff4081;
+      position: relative;
+      //border-bottom: 1px solid #ff4081 ;
+    }
+
+    .active::before {
+      content: ""; /* Required property, can be empty for a line */
+      position: absolute;
+      top: 30px; /* Position at the top of the container, change as needed */
+      left: 0; /* Align to the left side */
+      width: 100%; /* Line should span the full width of the container */
+      height: 2px; /* Thickness of the line */
+      background-color: #ff4081; /* Color of the line */
+    }
+  }
+}
+
+.template-cards {
+  display: flex;
+  align-items: start;
+  gap: 16px;
+  align-items: start;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+  background: #e0e0e0; /* Replace with the actual image */
+  height: 100px; /* Adjust as needed */
+}
+
+.card-title {
+  padding: 8px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+}

@@ -13,13 +13,16 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class ShellComponent implements OnInit {
   public menuItems = [
-    { name: 'Dashboard', icon: 'bar_chart_4_bars', route: '/home' },
-    { name: 'JobBoard', icon: 'work', route: '/job-board' },
-    { name: 'Candidate', icon: 'group', route: '/candidate' },
-    { name: 'Recruitment', icon: 'grading', route: '/recruitment' },
-    { name: 'Chat', icon: 'chat-icon', route: '/chat' },
-    { name: 'Settings', icon: 'settings-icon', route: '/settings' },
+    { name: 'Dashboard', icon: '../../assets/grid-3.png', route: '/home' },
+    { name: 'JobBoard', icon: '../../assets/briefcase.png', route: '/job-board' },
+    { name: 'Candidate', icon: '../../assets/personalcard.png', route: '/candidate' },
+    { name: 'Recruitment', icon: '../../assets/calendar-2.png', route: '/recruitment' },
+    { name: 'Chat', icon: '../../assets/messages-3.png', route: '/chat' },
+    { name: 'Settings', icon: '../../assets/setting-2.png', route: '/settings' },
   ];
+
+  showChat: boolean = true;
+  showFloatingChat: boolean = false;
 
   isSideNavOpen: boolean = true;
 
@@ -38,6 +41,12 @@ export class ShellComponent implements OnInit {
   logout() {
     this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
   }
+
+  toggleFloatingchat(showChat: boolean) {
+    console.log(showChat);
+    this.showFloatingChat = !this.showFloatingChat;
+  }
+  openAside = false;
 
   get username(): string | null {
     const credentials = this.credentialsService.credentials;

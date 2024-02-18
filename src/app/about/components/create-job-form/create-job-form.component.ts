@@ -29,6 +29,22 @@ export class CreateJobFormComponent implements OnInit, AfterViewInit {
     this.selectedIndex = index;
   }
 
+  keywords: string[] = [
+    'Ad Hoc Analysis',
+    'Annual Budgeting',
+    'Financial Planning',
+    'Financial Planning',
+    'Financial Planning',
+  ];
+
+  removeKeyword(keyword: string): void {
+    this.keywords = this.keywords.filter((k) => k !== keyword);
+  }
+
+  addKeyword(): void {
+    // Logic to add a new keyword
+  }
+
   navigateToPrevious(): void {
     if (this.selectedIndex > 0) {
       this.navigateToStep(this.selectedIndex - 1);
