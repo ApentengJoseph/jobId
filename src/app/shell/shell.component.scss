@@ -111,7 +111,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 2rem;
+  margin-right: 3rem;
 
   img {
     width: 2rem;
@@ -124,8 +124,8 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 15px 0;
-  height: 90%;
+  // padding: 15px 0;
+  // height: 90%;
   // Adjust width and other properties as necessary to match the image
 }
 
@@ -137,6 +137,7 @@ img {
   display: flex;
   // flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 
   .float-chat-btn {
     position: absolute;

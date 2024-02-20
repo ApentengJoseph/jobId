@@ -17,8 +17,8 @@ export class ShellComponent implements OnInit {
     { name: 'JobBoard', icon: '../../assets/briefcase.png', route: '/job-board' },
     { name: 'Candidate', icon: '../../assets/personalcard.png', route: '/candidate' },
     { name: 'Recruitment', icon: '../../assets/calendar-2.png', route: '/recruitment' },
-    { name: 'Chat', icon: '../../assets/messages-3.png', route: '/chat' },
-    { name: 'Settings', icon: '../../assets/setting-2.png', route: '/settings' },
+    { name: 'Message', icon: '../../assets/messages-3.png', route: '/chat' },
+    { name: 'Notification', icon: '../../assets/setting-2.png', route: '/settings' },
   ];
 
   showChat: boolean = true;
