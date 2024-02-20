@@ -6,7 +6,7 @@
 .mat-sidenav {
   min-width: 270px;
   max-width: 28%;
-  height: 100vh;
+  // height: 100vh;
   position: fixed;
 }
 
@@ -111,7 +111,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 2rem;
+  margin-right: 2rem;
 
   img {
     width: 2rem;
@@ -135,7 +135,7 @@ img {
   margin: 0;
   //height: 35%;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: space-around;
 
   .float-chat-btn {
@@ -150,10 +150,10 @@ img {
     justify-content: space-between;
     position: relative;
     cursor: pointer;
-    margin-top: 2rem;
+    // margin-top: 2rem;
 
     &.active {
-      background-color: lighten($color: #ffb2ca, $amount: 8); // Use the exact color from the image
+      background-color: lighten($color: white, $amount: 8); // Use the exact color from the image
       span {
         background-color: #ea3970;
         width: 32px;

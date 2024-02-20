@@ -1,6 +1,6 @@
 <div fxFlex style="position: relative">
   <mat-sidenav-container>
-    <mat-sidenav
+    <!-- <mat-sidenav
       #sidenav
       [mode]="isMobile ? 'over' : 'side'"
       [opened]="!isMobile"
@@ -13,20 +13,9 @@
           <h3 style="color: #a80837; font-weight: bold">JobId</h3></span
         >
         <div fxFlex></div>
-        <div>
-          <button mat-icon-button>
-            <img
-              *ngIf="isSideNavOpen"
-              (click)="closeSidenav()"
-              style="width: 20px; height: 20px"
-              src="../../assets/direaction left.png"
-              alt="arrow"
-            />
-            <!-- <mat-icon *ngIf="isSideNavOpen" (click)="closeSidenav()">arrow_back_ios</mat-icon> -->
-          </button>
-        </div>
+       
       </mat-toolbar>
-      <aside class="sidebar">
+       <aside class="sidebar">
         <ul class="nav">
           <h5>TOOLS</h5>
           <li
@@ -50,37 +39,75 @@
             />
           </li>
         </ul>
-        <div class="logout">
-          <mat-slide-toggle>Activity log</mat-slide-toggle>
-          <span style="display: flex; align-items: center"
-            ><img
-              src="../../assets/login.png"
-              style="width: 25px; height: 25px; margin-right: 1.5rem"
-              alt="login-logo"
-            />
-            <h4>Logout</h4></span
-          >
-        </div>
+      
       </aside>
-    </mat-sidenav>
+    </mat-sidenav> -->
     <mat-sidenav-content>
       <mat-toolbar class="mat-elevation-z6">
-        <mat-icon *ngIf="!isSideNavOpen" (click)="openSidenav()">arrow_forward_ios</mat-icon>
+        <!-- <mat-icon *ngIf="!isSideNavOpen" (click)="openSidenav()">arrow_forward_ios</mat-icon> -->
         <header class="header">
-          <div class="welcome-text">{{ title }}</div>
+          <!-- <div class="welcome-text">{{ title }}</div> -->
+
+          <!-- <span class="logo"
+              ><img src="../../assets/logo.png" alt="logo" />
+              <h3 style="color: #a80837; font-weight: bold">JobId</h3></span
+            > -->
+
+          <!-- <div>
+              <button mat-icon-button>
+                <img
+                  *ngIf="isSideNavOpen"
+                  (click)="closeSidenav()"
+                  style="width: 20px; height: 20px"
+                  src="../../assets/direaction left.png"
+                  alt="arrow"
+                />
+                <mat-icon *ngIf="isSideNavOpen" (click)="closeSidenav()">arrow_back_ios</mat-icon>
+              </button>
+            </div> -->
+
+          <aside class="sidebar">
+            <ul class="nav">
+              <!-- <h5>TOOLS</h5> -->
+              <span class="logo"
+                ><img src="../../assets/logo.png" alt="logo" />
+                <h3 style="color: #a80837; font-weight: bold">JobId</h3></span
+              >
+              <li
+                class="nav-item"
+                *ngFor="let item of menuItems; let i = index"
+                routerLinkActive="active"
+                [routerLink]="item.route"
+              >
+                <a class="nav-link">
+                  <span style="margin-right: 1rem">
+                    <img style="width: 25px; height: 25px" [src]="item.icon" alt="icon" />
+                  </span>
+                  {{ item.name }}
+                </a>
+                <!-- <img
+                  class="img"
+                  *ngIf="i !== 0"
+                  src="../../assets/arrow-right.png"
+                  style="width: 25px; height: 25px; margin-right: 1rem"
+                  alt="arrow"
+                /> -->
+              </li>
+            </ul>
+          </aside>
           <div class="search-container">
             <input type="text" placeholder="Search" class="search-bar" />
           </div>
-          <button class="new-post-btn" [routerLink]="'job-board/create-job-form'">Create new post</button>
-          <button class="close-post-btn">Close post</button>
+          <!-- <button class="new-post-btn" [routerLink]="'job-board/create-job-form'">Create new post</button> -->
+          <!-- <button class="close-post-btn">Close post</button> -->
           <div class="user-controls">
             <button class="icon-btn"><mat-icon>apps</mat-icon></button>
             <button class="icon-btn">
               <img src="https://gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="Notifications" />
             </button>
-            <button class="icon-btn">
+            <!-- <button class="icon-btn">
               <img src="https://gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="Profile" />
-            </button>
+            </button> -->
           </div>
         </header>
       </mat-toolbar>
