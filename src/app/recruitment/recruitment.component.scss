@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  width: 100%;
+  //height: 100%;
+  text-align: center;
+  overflow-y: hidden;
+  padding: 1em;
+  gap: 1rem;
+  background: #fbfbfb;
+}
+
+/* Toolbar styling */
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form field styling */
+mat-form-field {
+  margin-right: 8px;
+}
+
+/* Input styling */
+mat-form-field.mat-form-field {
+  width: 200px; /* Adjust as needed */
+}
+
+/* Button styling */
+button.mat-button {
+  margin: 0 8px;
+}
+
+/* Menu item styling */
+button.mat-menu-item {
+  text-transform: uppercase; /* If you want to match the design */
+}
+
+/* Spacer element to push elements to the edges */
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* Style for the button that triggers the menu to match your design */
+.mat-button {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+/* Active state for the dropdown, if needed */
+.mat-button[aria-expanded="true"] {
+  background-color: #e0e0e0; /* color when the menu is open */
+}
+
+/* Optional: Style for the mat-icon if you decide to use icons in the buttons */
+mat-icon {
+  margin-right: 5px;
+}

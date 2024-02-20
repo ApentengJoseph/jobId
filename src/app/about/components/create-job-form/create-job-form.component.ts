@@ -1,6 +1,12 @@
 import { CdkStepper } from '@angular/cdk/stepper';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 
+interface DropdownOption {
+  text: string;
+  icon: string;
+  value: any;
+}
+
 @Component({
   selector: 'app-create-job-form',
   templateUrl: './create-job-form.component.html',
@@ -67,5 +73,24 @@ export class CreateJobFormComponent implements OnInit, AfterViewInit {
 
   isLastStep(): boolean {
     return this.selectedIndex === this.steps.length - 1;
+  }
+
+  public isOpen = false;
+  public selectedOption = { value: 'placeholder', label: 'Select job role', icon: '⬇️' }; // Placeholder icon
+
+  public options = [
+    { value: 'accountant', label: 'Accountant', icon: '🔥' },
+    { value: 'finance-specialist', label: 'Finance Specialist', icon: '🌟' },
+    { value: 'finance-manager', label: 'Finance Manager', icon: '🍀' },
+    { value: 'chief-financial-officer', label: 'Chief financial officer', icon: '🍀' },
+  ];
+
+  toggleDropdown() {
+    this.isOpen = !this.isOpen;
+  }
+
+  selectOption(option: { value: string; label: string; icon: string }) {
+    this.selectedOption = option;
+    this.toggleDropdown();
   }
 }

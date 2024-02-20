@@ -53,11 +53,20 @@
           <form class="job-details-form">
             <div class="group-one" style="margin-top: 3rem">
               <div class="form-group">
-                <label for="jobRole">Job Role</label>
-                <select id="jobRole" class="form-control">
-                  <option value="financeSpecialist">Finance Specialist</option>
-                  <!-- More options -->
-                </select>
+                <label for="department">Job Role</label>
+                <div class="custom-select-wrapper" (click)="toggleDropdown()">
+                  <div class="custom-select">
+                    <div class="custom-select__trigger">
+                      <span>{{ selectedOption.label }}</span>
+                      <div class="arrow"></div>
+                    </div>
+                    <div class="custom-options" *ngIf="isOpen">
+                      <div class="custom-option" *ngFor="let option of options" (click)="selectOption(option)">
+                        {{ option.label }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div class="form-group">

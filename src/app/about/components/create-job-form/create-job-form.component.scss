@@ -1279,3 +1279,90 @@ p {
   color: #fff;
   width: 50%;
 }
+
+///Custom dropdown
+///
+/* Add your previous CSS here */
+.custom-select-wrapper {
+  position: relative;
+  user-select: none;
+  width: 100%;
+}
+
+.custom-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 22px;
+  font-size: 18px;
+  font-weight: 300;
+  color: #333;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  line-height: 40px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  /* border-radius: 4px;*/
+}
+
+.arrow {
+  content: "";
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #333;
+}
+
+.custom-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  //border-top: none;
+  background-color: #fff;
+  z-index: 10;
+}
+
+.custom-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: 100;
+  font-size: 14px;
+  color: #1a202c;
+  line-height: 16px;
+}
+
+.custom-select-wrapper .custom-options {
+  display: block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.custom-option {
+  padding: 10px 22px;
+  border-bottom: 1px solid #e0e9f4;
+  border-width: 80%;
+  font-size: 14px;
+  font-weight: 400;
+  color: #131825;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s;
+}
+
+.custom-option:last-child {
+  border-bottom: none;
+}
+
+.custom-option:hover {
+  background-color: #f2f2f25b;
+}
