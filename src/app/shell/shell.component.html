@@ -1,4 +1,4 @@
-<div fxFlex style="position: relative">
+<!-- <div fxFlex style="position: relative">
   <mat-sidenav-container>
     <mat-sidenav
       #sidenav
@@ -22,7 +22,6 @@
               src="../../assets/direaction left.png"
               alt="arrow"
             />
-            <!-- <mat-icon *ngIf="isSideNavOpen" (click)="closeSidenav()">arrow_back_ios</mat-icon> -->
           </button>
         </div>
       </mat-toolbar>
@@ -85,15 +84,59 @@
         </header>
       </mat-toolbar>
       <router-outlet></router-outlet>
-      <!-- <div *ngIf="showChat && !showFloatingChat">
-        <span *ngIf="alertCount > 0" class="alert-count">{{ alertCount }}</span>
-        <img
-          class="float-chat-btn cursor-pointer"
-          src="../../assets/icons/float-chat.png"
-          alt=""
-          (click)="toggleFloatingchat(true)"
-        />
-      </div> -->
+    
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div> -->
+
+<div fxFlex style="position: relative">
+  <mat-sidenav-container>
+    <mat-sidenav-content>
+      <mat-toolbar class="mat-elevation-z6">
+        <header class="header">
+          <aside class="sidebar">
+            <ul class="nav">
+              <span class="logo"><img src="../../assets/logo.png" alt="logo" />
+                <h3 style="color: #a80837; font-weight: bold">JobId</h3>
+              </span>
+              <li class="nav-item" *ngFor="let item of menuItems; let i = index" routerLinkActive="active"
+                [routerLink]="item.route">
+                <a class="nav-link">
+                  <span style="margin-right: 1rem">
+                    <img style="width: 25px; height: 25px; display: flex; align-items: center" [src]="item.icon"
+                      alt="icon" />
+                  </span>
+                  {{ item.name }}
+                </a>
+              </li>
+            </ul>
+          </aside>
+          <div class="search-container">
+            <img src="../../assets/search.svg" alt="Search" class="search-icon">
+            <input type="text" placeholder="Search" class="search-bar" />
+            <div class="custom-select-wrapper" (click)="toggleDropdown()">
+              <div class="custom-select">
+                <div class="custom-select__trigger">
+                  <span>{{ selectedOption.label }}</span>
+                  <div class="arrow"></div>
+                </div>
+                <div class="custom-options" *ngIf="isOpen">
+                  <div class="custom-option" *ngFor="let option of options" (click)="selectOption(option)">
+                    {{ option.label }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="user-controls">
+            <button class="icon-btn"><mat-icon>apps</mat-icon></button>
+            <button class="icon-btn">
+              <img src="https://gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="Notifications" />
+            </button>
+          </div>
+        </header>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

@@ -17,14 +17,20 @@ export class ShellComponent implements OnInit {
     { name: 'JobBoard', icon: '../../assets/briefcase.png', route: '/job-board' },
     { name: 'Candidate', icon: '../../assets/personalcard.png', route: '/candidate' },
     { name: 'Recruitment', icon: '../../assets/calendar-2.png', route: '/recruitment' },
-    { name: 'Chat', icon: '../../assets/messages-3.png', route: '/chat' },
-    { name: 'Settings', icon: '../../assets/setting-2.png', route: '/settings' },
+    { name: 'Message', icon: '../../assets/messages-3.png', route: '/chat' },
+    { name: 'Notification', icon: '../../assets/setting-2.png', route: '/settings' },
   ];
 
   showChat: boolean = true;
   showFloatingChat: boolean = false;
 
   isSideNavOpen: boolean = true;
+  public isOpen = false;
+  public selectedOption = { value: 'placeholder', label: 'Select' };
+  public options = [
+    { value: 'jobs', label: 'Jobs' },
+    { value: 'people', label: 'People' },
+  ];
 
   @ViewChild('sidenav') sideNav!: MatSidenav;
 
@@ -41,7 +47,13 @@ export class ShellComponent implements OnInit {
   logout() {
     this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
   }
-
+  selectOption(option: { value: string; label: string }) {
+    this.selectedOption = option;
+    this.isOpen = false;
+  }
+  toggleDropdown() {
+    this.isOpen = !this.isOpen;
+  }
   toggleFloatingchat(showChat: boolean) {
     console.log(showChat);
     this.showFloatingChat = !this.showFloatingChat;
