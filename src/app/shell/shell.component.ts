@@ -21,10 +21,20 @@ export class ShellComponent implements OnInit {
     { name: 'Notification', icon: '../../assets/setting-2.png', route: '/settings' },
   ];
 
+  public sideItems = [
+    { icon: '../../assets/icons/icon-1.png', route: '/home' },
+    { icon: '../../assets/icons/icon-2.png', route: '/home' },
+    { icon: '../../assets/icons/icon-3.png', route: '/home' },
+    { icon: '../../assets/icons/icon-4.png', route: '/home' },
+    { icon: '../../assets/icons/icon-5.png', route: '/home' },
+    { icon: '../../assets/icons/icon-6.png', route: '/home' },
+  ];
   showChat: boolean = true;
   showFloatingChat: boolean = false;
 
   isSideNavOpen: boolean = true;
+  isShowProfile: boolean = false;
+
   public isOpen = false;
   public selectedOption = { value: 'placeholder', label: 'Select' };
   public options = [
@@ -46,6 +56,9 @@ export class ShellComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
+  }
+  showProfile() {
+    this.isShowProfile = !this.isShowProfile;
   }
   selectOption(option: { value: string; label: string }) {
     this.selectedOption = option;
