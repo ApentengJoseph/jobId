@@ -1,61 +1,576 @@
-.container {
+.candidate {
   display: flex;
+  flex-direction: column;
+  //align-items: center;
+  justify-content: flex-start;
   width: 100%;
-  //height: 100%;
-  text-align: center;
-  overflow-y: hidden;
-  padding: 1em;
-  gap: 1rem;
-  background: #fbfbfb;
+  padding: 20px;
 }
 
-/* Toolbar styling */
-mat-toolbar {
+/* You may need to add further styles for specific adjustments */
+.filter-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e9f4;
+  border-radius: 20px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  width: 90%;
+  color: #90a3bf;
+  font-size: 500;
+  line-height: 16px;
+  font-size: 14px;
 }
 
-/* Form field styling */
-mat-form-field {
+.filter-input {
+  border: 1px solid #d1d1d1;
+  border-radius: 15px;
+  padding: 8px 15px;
   margin-right: 8px;
+  outline: none;
+  font-size: 14px;
+  flex-grow: 1;
+  color: #90a3bf;
+  font-size: 500;
+  line-height: 16px;
+  font-size: 14px;
 }
 
-/* Input styling */
-mat-form-field.mat-form-field {
-  width: 200px; /* Adjust as needed */
+.filter-input::placeholder {
+  color: #a9a9a9;
 }
 
-/* Button styling */
-button.mat-button {
-  margin: 0 8px;
+.filter-button {
+  background-color: transparent;
+  border: 1px solid #90a3bf;
+  display: flex;
+  border-radius: 15px;
+  align-items: center;
+  padding: 8px 20px;
+  justify-content: space-around;
+  margin-right: 8px;
+  width: 143px;
+  cursor: pointer;
+  color: #596780;
+  font-size: 500;
+  line-height: 16px;
+  font-size: 14px;
+  text-align: center;
+  outline: none;
 }
 
-/* Menu item styling */
-button.mat-menu-item {
-  text-transform: uppercase; /* If you want to match the design */
+.filter-button:last-child {
+  margin-right: 0;
 }
 
-/* Spacer element to push elements to the edges */
-.example-spacer {
-  flex: 1 1 auto;
+/* Adjustments for the dropdown arrow */
+.filter-button:after {
+  content: "\25BC";
+  font-size: 10px;
+  padding-left: 5px;
 }
 
-/* Style for the button that triggers the menu to match your design */
-.mat-button {
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  padding: 5px 10px;
+/* Specific styles for the first button if needed */
+.filter-button:first-child:before {
+  content: "";
+  /* Add any specific styles for the Tags button */
+}
+.card-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column !important;
+  justify-content: center;
+  width: 95%;
+  height: 246px;
+  border-radius: 12px;
+  background-color: #fcfcfc;
+  box-shadow: 0px 4px 9px 0px #0000000d;
+  margin-top: 1rem;
 }
 
-/* Active state for the dropdown, if needed */
-.mat-button[aria-expanded="true"] {
-  background-color: #e0e0e0; /* color when the menu is open */
+.avatar-section {
+  display: flex;
+  align-items: center;
 }
 
-/* Optional: Style for the mat-icon if you decide to use icons in the buttons */
-mat-icon {
+.user-card {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 90%;
+  /* background-color: #ffffff; */
+  border-radius: 20px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-section {
+  display: flex;
+  align-items: center;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: green; /* Change to match the status color */
+  border-radius: 50%;
   margin-right: 5px;
 }
+
+.avatar {
+  width: 40px; /* Adjust as necessary */
+  height: 50px; /* Adjust as necessary */
+  border-radius: 20px;
+  margin-right: 14px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-id {
+  font-weight: bold;
+}
+
+.user-role {
+  font-size: 0.8rem;
+  color: #666666;
+}
+
+.actions {
+  margin-left: auto;
+}
+
+.action-button {
+  background-color: #fcfcfc;
+  border: 1px solid #c3d4e9;
+  padding: 5px 15px;
+  margin-left: 10px;
+  border-radius: 60px;
+  width: 152px;
+  cursor: pointer;
+  color: #c3d4e9;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #e2e2e2;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.personality-test {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  width: 33%;
+}
+
+.icon {
+  width: 32px; /* Adjust size as needed */
+  height: auto;
+  margin-right: 5px;
+}
+
+.test-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.test-name {
+  font-weight: bold;
+}
+
+.test-result,
+.test-score {
+  font-size: 0.8rem;
+}
+
+.left-section,
+.middle-section,
+.right-section {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  height: 100%;
+}
+
+.middle-section,
+.left-section {
+  border-right: 1px solid #e0e9f4;
+  margin: 0.5rem;
+}
+
+.left-section {
+  h3 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+    color: #90a3bf;
+  }
+}
+
+.personality-icon {
+  width: 40px;
+  height: auto;
+}
+
+.personality-info {
+  padding-left: 8px;
+}
+
+.personality-title {
+  font-size: 10px;
+  color: #888;
+}
+
+.personality-type {
+  color: #555;
+  font-weight: bold;
+}
+
+.personality-details {
+  font-size: 10px;
+  color: #555;
+}
+
+.detail-item:not(:last-child):after {
+  content: "|";
+  padding: 0 4px;
+}
+
+.candidate-name {
+  color: #000;
+  font-weight: bold;
+}
+
+.candidate-detail {
+  color: #888;
+  font-size: 12px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.stars {
+  color: #ffd700; /* Gold color for stars */
+  margin-right: 5px;
+}
+
+.rating-number {
+  font-weight: bold;
+  color: #555;
+}
+
+.refer-button {
+  border: none;
+  background-color: #f0f0f0;
+  padding: 5px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.tags-section {
+  display: flex;
+}
+
+.tag {
+  background-color: #fbd7e2;
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-size: 10px;
+  margin-right: 5px;
+  white-space: nowrap;
+  color: #ea3970;
+  margin-top: 0.5rem;
+}
+
+.text-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  //gap: 0.5rem;
+
+  .fire {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #e0e9f4;
+    height: 118px;
+    border-radius: 8px;
+    width: 30%;
+    padding: 10px;
+
+    .line {
+      border-bottom: 1px solid #e0e9f4;
+      width: 100%;
+    }
+
+    img {
+      width: 35px;
+      height: 35px;
+      margin-bottom: 0.5rem;
+    }
+
+    h4 {
+      font-size: 14px;
+      font-weight: 400;
+      color: #333;
+    }
+  }
+
+  .fox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #e0e9f4;
+    height: 118px;
+    border-radius: 8px;
+    padding: 10px;
+    width: 30%;
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .line {
+      border-bottom: 1px solid #e0e9f4;
+      width: 100%;
+    }
+
+    img {
+      width: 15px;
+      height: 15px;
+      margin-right: 0.5rem;
+    }
+
+    p {
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 13px;
+    }
+  }
+
+  .dominance {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #e0e9f4;
+    height: 118px;
+    border-radius: 8px;
+    padding: 8px;
+    width: 30%;
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    img {
+      width: 30px;
+      height: 30px;
+      margin-top: 0.5rem;
+    }
+    .texts {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        font-size: 7px;
+        font-weight: 400;
+        color: #000;
+      }
+    }
+  }
+}
+
+.middle-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  .candidate-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #90a3bf;
+  }
+
+  .candidate-details {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-size: 14px;
+      font-weight: 400;
+      color: #596780;
+      line-height: 21px;
+    }
+  }
+}
+
+.rating-number {
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+}
+
+.line {
+  border-bottom: 1px solid #e0e9f4;
+  width: 100%;
+}
+
+.grade {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.refer-btn {
+  border: none;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.rate {
+  float: left;
+  height: 50px;
+  padding: 0 10px;
+}
+.rate:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+.rate:not(:checked) > label:before {
+  content: "★ ";
+}
+.rate > input:checked ~ label {
+  color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+
+.right-section {
+  h3 {
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 600;
+    color: #90a3bf;
+  }
+}
+
+.shell {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.side-panel {
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 558px;
+  width: 35%;
+  border-radius: 25px;
+  border: 1px solid #e0e9f4;
+  padding: 10px;
+
+  img {
+    width: 207px;
+    height: 190.22px;
+    object-fit: cover;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+
+    h3 {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 36px;
+      color: #0d121f;
+      margin-bottom: -0.5rem;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 27px;
+      color: #131825;
+      margin-bottom: 1rem;
+    }
+
+    .add-candidate {
+      width: 196px;
+      height: 46px;
+      color: #fff;
+      background-color: #ea3970;
+      border-radius: 60px;
+      border: none;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      margin-top: 1rem;
+    }
+
+    .add-candidate:hover {
+      background-color: darken($color: #ea3970, $amount: 15);
+    }
+  }
+}
+
+.contents {
+  display: flex;
+  height: 100%;
+  margin-top: 1rem;
+}
+/* Additional responsive styles if necessary */

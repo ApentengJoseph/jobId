@@ -8,6 +8,7 @@ import { JobFormComponent } from './components/job-form/job-form.component';
 
 const routes: Routes = [
   // Module is lazy loaded, see app-routing.module.ts
+  { path: '', redirectTo: '/job-board', pathMatch: 'full' },
   { path: '', component: AboutComponent, data: { title: marker('Job Board') } },
   { path: 'create-job-form', component: CreateJobFormComponent, data: { title: marker('Create Job Form') } },
   { path: 'job-form', component: JobFormComponent, data: { title: marker('Job Form') } },
