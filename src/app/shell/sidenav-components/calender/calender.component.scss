@@ -96,3 +96,12 @@
   width: 100%;
   margin: 10px 0;
 }
+select {
+  border: 2px solid #cacaca;
+  padding: 4px 8px;
+  outline: none;
+}
+.crd-kg {
+  display: flex;
+  justify-content: space-between;
+}
