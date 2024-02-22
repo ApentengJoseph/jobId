@@ -113,11 +113,42 @@
           </button>
         </div>
       </mat-toolbar>
+
       <aside class="r-side">
         <ul>
-          <li class="" *ngFor="let item of sideItems; let i = index" [routerLink]="item.route">
+          <li class="" (click)="openIcon1()">
             <a class="">
-              <img style="width: 36px; height: 36px" [src]="item.icon" alt="icon" />
+              <img src="../../assets/icons/icon-1.png" alt="icon" />
+            </a>
+          </li>
+          <!--  -->
+          <li class="" (click)="openIcon1()">
+            <a class="">
+              <img src="../../assets/icons/icon-2.png" alt="icon" />
+            </a>
+          </li>
+          <!--  -->
+          <li class="" (click)="openIcon1()">
+            <a class="">
+              <img src="../../assets/icons/icon-3.png" alt="icon" />
+            </a>
+          </li>
+          <!--  -->
+          <li class="" (click)="openIcon1()">
+            <a class="">
+              <img src="../../assets/icons/icon-4.png" alt="icon" />
+            </a>
+          </li>
+          <!--  -->
+          <li class="" (click)="openIcon1()">
+            <a class="">
+              <img src="../../assets/icons/icon-5.png" alt="icon" />
+            </a>
+          </li>
+          <!--  -->
+          <li class="" (click)="openIcon1()">
+            <a class="">
+              <img src="../../assets/icons/icon-6.png" alt="icon" />
             </a>
           </li>
         </ul>
@@ -125,6 +156,8 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-toolbar class="mat-elevation-z6">
+        <mat-icon *ngIf="!isSideNavOpen" (click)="openSidenav()">arrow_forward_ios</mat-icon>
+
         <header class="header">
           <aside class="sidebar">
             <ul class="nav">

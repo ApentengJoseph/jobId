@@ -236,7 +236,6 @@ img {
   // justify-content: space-between;
   // padding: 15px 0;
   // height: 90%;
-  // Adjust width and other properties as necessary to match the image
 }
 
 .nav {
@@ -324,6 +323,10 @@ img {
   flex-direction: column;
   gap: 10px;
   margin-bottom: 35px;
+  a img {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 h5 {
