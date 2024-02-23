@@ -27,7 +27,7 @@
           <li class="tab" *ngFor="let step of steps; let i = index" [attr.aria-selected]="i === selectedIndex">
             <a href="javascript:void(0)" [ngClass]="i === selectedIndex ? 'active' : ''" (click)="navigateToStep(i)">{{
               step.label
-              }}</a>
+            }}</a>
           </li>
         </ul>
       </div>
@@ -44,7 +44,8 @@
       <!-- job-details-form.component.html -->
       <div class="content" *ngIf="selectedIndex === 0">
         <h3
-          style="text-align: start; margin-left: 4rem; font-size: 20px; font-weight: 600; padding: 1rem; color: #596780">
+          style="text-align: start; margin-left: 4rem; font-size: 20px; font-weight: 600; padding: 1rem; color: #596780"
+        >
           Job Details
         </h3>
         <hr class="new1" />
@@ -165,8 +166,8 @@
                 <h1 class="job-title">Job description</h1>
 
                 <div class="input-group">
-                  <span style="width: 65%; position: relative"><input type="text" class="ai-input"
-                      placeholder="Input AI prompt" />
+                  <span style="width: 65%; position: relative"
+                    ><input type="text" class="ai-input" placeholder="Input AI prompt" />
                     <div class="ai-icon"></div>
                   </span>
                   <button class="ai-generate-btn">
@@ -193,8 +194,11 @@
 
                 <div class="description-form">
                   <label for="jobDescription">Description</label>
-                  <textarea id="jobDescription" rows="15"
-                    placeholder="Enter the Job description the candidate would be required to do on a day to day"></textarea>
+                  <textarea
+                    id="jobDescription"
+                    rows="15"
+                    placeholder="Enter the Job description the candidate would be required to do on a day to day"
+                  ></textarea>
                 </div>
               </div>
             </div>
@@ -299,9 +303,10 @@
                   </p>
                   <h2 class="job-title">Finance Specialist</h2>
                   <div class="input-group-i">
-                    <label for="experience"><small
-                        style="color: red; margin-right: 0.5rem; font-size: 18px">*</small>How many years of
-                      experience do you have with Microsoft Excel</label>
+                    <label for="experience"
+                      ><small style="color: red; margin-right: 0.5rem; font-size: 18px">*</small>How many years of
+                      experience do you have with Microsoft Excel</label
+                    >
                     <input type="text" id="experience" placeholder="" />
                   </div>
                   <hr style="margin-top: 3rem" class="new2-i" />
@@ -364,8 +369,11 @@
               <div class="cardss">
                 <div class="icons">
                   <!-- Replace with actual icons or images -->
-                  <img src="../../../../assets/carbon_application-web.png" style="width: 40px; height: 40px"
-                    alt="facebook" />
+                  <img
+                    src="../../../../assets/carbon_application-web.png"
+                    style="width: 40px; height: 40px"
+                    alt="facebook"
+                  />
                   <h3>Connect website</h3>
                 </div>
                 <p>Embed your jobs on your website, your career page would be updated automatically</p>
@@ -374,8 +382,11 @@
               <div class="cardss">
                 <div class="icons">
                   <!-- Replace with actual icons or images -->
-                  <img src="../../../../assets/carbon_model-reference.png" style="width: 40px; height: 40px"
-                    alt="facebook" />
+                  <img
+                    src="../../../../assets/carbon_model-reference.png"
+                    style="width: 40px; height: 40px"
+                    alt="facebook"
+                  />
                   <h3>Referrals</h3>
                 </div>
                 <p>Send internal company mails inviting employees to refer candidates for rewards</p>
@@ -469,12 +480,22 @@
             </div>
           </div>
         </div>
-        <button mat-button class="previous-btn" *ngIf="showPreviousButton()" style="margin-top: 3rem"
-          (click)="navigateToPrevious()">
+        <button
+          mat-button
+          class="previous-btn"
+          *ngIf="showPreviousButton()"
+          style="margin-top: 3rem"
+          (click)="navigateToPrevious()"
+        >
           Previous
         </button>
-        <button mat-button *ngIf="showNextButton()" style="margin-top: 3rem" class="save-post-btn"
-          (click)="navigateToNext()">
+        <button
+          mat-button
+          *ngIf="showNextButton()"
+          style="margin-top: 3rem"
+          class="save-post-btn"
+          (click)="navigateToNext()"
+        >
           Save & Continue
         </button>
       </div>

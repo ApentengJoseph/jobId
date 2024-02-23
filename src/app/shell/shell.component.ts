@@ -15,12 +15,11 @@ import { CalenderComponent } from './sidenav-components/calender/calender.compon
 })
 export class ShellComponent implements OnInit {
   public menuItems = [
-    { name: 'Dashboard', icon: '../../assets/grid-3.png', route: '/home' },
     { name: 'JobBoard', icon: '../../assets/briefcase.png', route: '/job-board' },
     { name: 'Candidate', icon: '../../assets/personalcard.png', route: '/candidate' },
     { name: 'Recruitment', icon: '../../assets/calendar-2.png', route: '/recruitment' },
     { name: 'Message', icon: '../../assets/messages-3.png', route: '/chat' },
-    { name: 'Notification', icon: '../../assets/setting-2.png', route: '/settings' },
+    { name: 'Notification', icon: '../../assets/notification.png', route: '/settings' },
   ];
 
   public sideItems = [

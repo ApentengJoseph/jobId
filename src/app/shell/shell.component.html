@@ -102,15 +102,23 @@
         <header class="header">
           <aside class="sidebar">
             <ul class="nav">
-              <span class="logo"><img src="../../assets/logo.png" alt="logo" />
+              <span class="logo"
+                ><img src="../../assets/logo.png" alt="logo" />
                 <h3 style="color: #a80837; font-weight: bold">JobId</h3>
               </span>
-              <li class="nav-item" *ngFor="let item of menuItems; let i = index" routerLinkActive="active"
-                [routerLink]="item.route">
+              <li
+                class="nav-item"
+                *ngFor="let item of menuItems; let i = index"
+                routerLinkActive="active"
+                [routerLink]="item.route"
+              >
                 <a class="nav-link">
                   <span style="margin-right: 1rem">
-                    <img style="width: 25px; height: 25px; display: flex; align-items: center" [src]="item.icon"
-                      alt="icon" />
+                    <img
+                      style="width: 25px; height: 25px; display: flex; align-items: center"
+                      [src]="item.icon"
+                      alt="icon"
+                    />
                   </span>
                   {{ item.name }}
                 </a>
@@ -214,3 +222,10 @@
 
   </mat-sidenav-container>
 </div>
+</div>
+<!-- <app-floating-chat
+  *ngIf="showFloatingChat"
+  (toggleChat)="toggleFloatingchat($event)"
+>
+</app-floating-chat> -->
+
