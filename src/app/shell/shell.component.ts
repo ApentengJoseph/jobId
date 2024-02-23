@@ -7,6 +7,8 @@ import { AuthenticationService, CredentialsService } from '@app/auth';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CalenderComponent } from './sidenav-components/calender/calender.component';
+import { ChatComponent } from './sidenav-components/chat/chat.component';
+import { JobFolderComponent } from './sidenav-components/job-folder/job-folder.component';
 
 @Component({
   selector: 'app-shell',
@@ -103,9 +105,23 @@ export class ShellComponent implements OnInit {
   get title(): string {
     return this.titleService.getTitle();
   }
-  openIcon1() {
+  openCalender() {
     this.dialog.open(CalenderComponent, {
       width: '350px',
+      height: '100vh',
+      position: { left: '5%' },
+    });
+  }
+  openChat() {
+    this.dialog.open(ChatComponent, {
+      // width: '694px',
+      height: '100vh',
+      position: { left: '5%' },
+    });
+  }
+  openJobFolder() {
+    this.dialog.open(JobFolderComponent, {
+      width: '694px',
       height: '100vh',
       position: { left: '5%' },
     });
