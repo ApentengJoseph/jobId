@@ -91,8 +91,14 @@
 
 <div fxFlex style="position: relative">
   <mat-sidenav-container>
+    <!--right side nav  -->
+
+
+
     <mat-sidenav-content>
       <mat-toolbar class="mat-elevation-z6">
+
+
         <header class="header">
           <aside class="sidebar">
             <ul class="nav">
@@ -138,18 +144,88 @@
           </div>
           <div class="user-controls">
             <button class="icon-btn"><mat-icon>apps</mat-icon></button>
-            <button class="icon-btn">
+            <button (click)="showProfile()" class="icon-btn" style="position: relative">
               <img src="https://gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="Notifications" />
+              <div *ngIf="isShowProfile" class="profile-tray">
+                <div class="p-bdy">
+                  <img src="https://gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="Notifications" />
+                  <div>
+                    <p style="margin: 2px">Julius Eyang</p>
+                    <span style="display: flex; align-items: center; gap: 5px">
+                      <span class="type">Job No.</span>
+                      <span>JB134566</span>
+                      <img src="" alt="" />
+                    </span>
+                  </div>
+
+                  <img src="" alt="" />
+                </div>
+                <!--  -->
+                <div class="p-bdy">
+                  <img src="assets/icons/social-media/whatsapp.png" alt="Notifications" />
+                  <div>
+                    <p style="margin: 2px">Whatsapp profile</p>
+                    <span>last visited 02/02/2024</span>
+                  </div>
+                  <img src="" alt="" />
+                </div>
+                <!--  -->
+                <div style="display: flex; gap: 8px">
+                  <div class="dash-div">Company page</div>
+                  <div class="dash-div">Workspace</div>
+                </div>
+              </div>
             </button>
           </div>
+
         </header>
       </mat-toolbar>
-      <router-outlet></router-outlet>
+
+      <div class="content-container">
+        <div class="main-contents">
+
+          <router-outlet></router-outlet>
+        </div>
+
+
+        <nav>
+          <div class="right-side-nav">
+
+            <div class="right-side-content">
+              <button mat-icon-button class="right-side-top-btn"
+                [ngClass]="{'right-side-top-btn-active': !isSideNavOpen}">
+                <img (click)="toggleSideNav()" src="../../assets/icons/arrow-direction-left.svg" alt="arrow" />
+              </button>
+
+
+              <ng-container *ngIf="isSideNavOpen">
+
+                <div class="right-side-icons" *ngFor="let nav of sideItems">
+                  <button mat-icon-button (click)="openIcon1()">
+
+                    <img [src]="nav.icon" alt="icon" />
+                  </button>
+                </div>
+              </ng-container>
+
+            </div>
+
+
+          </div>
+        </nav>
+
+
+
+      </div>
+
     </mat-sidenav-content>
+
   </mat-sidenav-container>
+</div>
 </div>
 <!-- <app-floating-chat
   *ngIf="showFloatingChat"
   (toggleChat)="toggleFloatingchat($event)"
 >
 </app-floating-chat> -->
+

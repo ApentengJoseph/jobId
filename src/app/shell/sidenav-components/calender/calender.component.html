@@ -1,0 +1,89 @@
+<div>
+  <div></div>
+  <div>
+    <div class="initial">
+      <div>
+        <div style="margin-bottom: 4px">
+          <select style="border: 2px solid #cacaca; padding: 4px 8px; outline: none" name="" id="">
+            <option value="">Today</option>
+          </select>
+          <!-- <input readonly style="border: none; outline: none;" type="text" name="" id=""> -->
+        </div>
+        <p style="margin: 0">25th December 2022</p>
+      </div>
+      <img src="../../../../assets/icons/x-close.svg" alt="close" (click)="closeDialog()" />
+    </div>
+    <div class="crd">
+      <div>
+        <div style="display: flex; justify-content: space-between">
+          <div style="margin-bottom: 20px">
+            <p>Meeting ID: 356-135-467</p>
+            <p>Onboarding with Sarah</p>
+            <p>8:00 AM - 11:00 AM (2 HOURS)</p>
+          </div>
+          <img style="width: 25px; height: 25px" src="../../../../assets/icons/vertical.png" alt="" />
+        </div>
+
+        <div class="main">
+          <div style="position: relative">
+            <div
+              *ngFor="let user of users; let i = index"
+              class="contain"
+              [style.transform]="'translateX(' + i * 12 + 'px)'"
+            >
+              <img [src]="user.image" alt="User Image" />
+            </div>
+          </div>
+          <div class="main-child">
+            <img src="../../../../assets/icons/doc1.png" alt="" />
+            <img src="../../../../assets/icons/doc2.png" alt="" />
+            <img src="../../../../assets/icons/vid.png" alt="" />
+            <img src="../../../../assets/icons/doc3.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <button class="join-btn">Join meeting</button>
+    </div>
+
+    <div class="redesign">
+      <div class="re-child">
+        <p>Medium</p>
+        <span>TD-4567890-98</span>
+      </div>
+      <div class="type">
+        <p style="margin: 0">Redesign Onboarding flow</p>
+        <span> Software project</span>
+      </div>
+
+      <div style="position: relative">
+        <div
+          *ngFor="let user of users; let i = index"
+          class="contain"
+          [style.transform]="'translateX(' + i * 12 + 'px)'"
+        >
+          <img [src]="user.image" alt="User Image" />
+        </div>
+      </div>
+    </div>
+    <div class="redesign">
+      <div class="re-child">
+        <p>Medium</p>
+        <span>TD-4567890-98</span>
+      </div>
+      <div class="type">
+        <p style="margin: 0">Redesign Onboarding flow</p>
+        <span> Software project</span>
+      </div>
+
+      <div style="position: relative">
+        <div
+          *ngFor="let user of users; let i = index"
+          class="contain"
+          [style.transform]="'translateX(' + i * 12 + 'px)'"
+        >
+          <img [src]="user.image" alt="User Image" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

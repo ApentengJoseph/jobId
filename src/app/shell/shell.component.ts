@@ -5,6 +5,8 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 import { AuthenticationService, CredentialsService } from '@app/auth';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CalenderComponent } from './sidenav-components/calender/calender.component';
 
 @Component({
   selector: 'app-shell',
@@ -20,15 +22,26 @@ export class ShellComponent implements OnInit {
     { name: 'Notification', icon: '../../assets/notification.png', route: '/settings' },
   ];
 
+  public sideItems = [
+    { icon: '../../assets/icons/icon-1.png', route: '/home' },
+    { icon: '../../assets/icons/icon-2.png', route: '/home' },
+    { icon: '../../assets/icons/icon-3.png', route: '/home' },
+    { icon: '../../assets/icons/icon-4.png', route: '/home' },
+    { icon: '../../assets/icons/icon-5.png', route: '/home' },
+    { icon: '../../assets/icons/icon-6.png', route: '/home' },
+  ];
   showChat: boolean = true;
   showFloatingChat: boolean = false;
 
   isSideNavOpen: boolean = true;
+  isShowProfile: boolean = false;
+  isFirstSideNav: boolean = false;
+
   public isOpen = false;
   public selectedOption = { value: 'placeholder', label: 'Select' };
   public options = [
-    { value: 'jobs', label: 'Jobs' },
-    { value: 'people', label: 'People' },
+    { value: 'Today', label: 'Today' },
+    { value: 'Yesterday', label: 'Yesterday' },
   ];
 
   @ViewChild('sidenav') sideNav!: MatSidenav;
@@ -36,6 +49,7 @@ export class ShellComponent implements OnInit {
   constructor(
     private router: Router,
     private titleService: Title,
+    private dialog: MatDialog,
     private authenticationService: AuthenticationService,
     private credentialsService: CredentialsService,
     private breakpoint: BreakpointObserver
@@ -45,6 +59,9 @@ export class ShellComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
+  }
+  showProfile() {
+    this.isShowProfile = !this.isShowProfile;
   }
   selectOption(option: { value: string; label: string }) {
     this.selectedOption = option;
@@ -64,18 +81,8 @@ export class ShellComponent implements OnInit {
     return credentials ? credentials.username : null;
   }
 
-  openSidenav(): void {
-    if (this.sideNav) {
-      this.sideNav.open();
-      this.isSideNavOpen = !this.isSideNavOpen;
-    }
-  }
-
-  closeSidenav(): void {
-    if (this.sideNav) {
-      this.sideNav.close();
-      this.isSideNavOpen = !this.isSideNavOpen;
-    }
+  toggleSideNav(): void {
+    this.isSideNavOpen = !this.isSideNavOpen;
   }
 
   get isMobile(): boolean {
@@ -84,5 +91,12 @@ export class ShellComponent implements OnInit {
 
   get title(): string {
     return this.titleService.getTitle();
+  }
+  openIcon1() {
+    this.dialog.open(CalenderComponent, {
+      width: '350px',
+      height: '100vh',
+      position: { right: '5%' },
+    });
   }
 }
