@@ -1,22 +1,27 @@
 <div class="container">
   <div class="grid-container">
     <div class="aside-div">
-      <p class="border-b">
-        <span><img src="../../../../assets/icons/wechat.svg" alt="" /></span>
-        <span>Chat</span>
-      </p>
-      <div class="main">
-        <p class="all" (click)="selectTab(0)">All</p>
-        <p class="brit" (click)="selectTab(1)">Britney</p>
-        <p class="per" (click)="selectTab(2)">Personal</p>
-        <p class="cir" (click)="selectTab(3)">Circle</p>
+      <!-- sticky top -->
+      <div class="top-bar">
+        <p class="border-b">
+          <span><img src="../../../../assets/icons/wechat.svg" alt="" /></span>
+          <span>Chat</span>
+        </p>
+        <div class="main">
+          <p class="all" (click)="selectTab(0)">All</p>
+          <p class="brit" (click)="selectTab(1)">Britney</p>
+          <p class="per" (click)="selectTab(2)">Personal</p>
+          <p class="cir" (click)="selectTab(3)">Circle</p>
+        </div>
+        <div class="search-container">
+          <img src="../../assets/search.svg" alt="Search" class="search-icon" />
+          <input type="text" placeholder="Search" class="search-bar" />
+        </div>
+        <button class="new-chat-btn">New Chat</button>
       </div>
-      <div class="search-container">
-        <img src="../../assets/search.svg" alt="Search" class="search-icon" />
-        <input type="text" placeholder="Search" class="search-bar" />
-      </div>
-      <button class="new-chat-btn">New Chat</button>
-      <div>
+      <!-- scrollable -->
+      <!-- if selected tab is all and personal -->
+      <div class="scroll-div" *ngIf="selectedTab === 0 || selectedTab === 2">
         <div class="chat-container" *ngFor="let item of chatDetails">
           <div class="kgs">
             <img src="{{ item.img }}" alt="" />
@@ -28,86 +33,312 @@
           <span>{{ item.time }}</span>
         </div>
       </div>
+      <!-- if selected tab is circle -->
+      <div *ngIf="selectedTab === 3">
+        <div class="chat-container" *ngFor="let item of circleDetails">
+          <div class="kgs">
+            <img src="{{ item.img }}" alt="" />
+            <div class="chat-text">
+              <p>{{ item.user }}</p>
+              <span>{{ item.text }}</span>
+            </div>
+          </div>
+          <span></span>
+        </div>
+      </div>
     </div>
     <div class="content-container">
       <ng-container *ngIf="selectedTab === 0">
-        <div>
-          <div class="contact-head">
-            <h1>All Contacts</h1>
-            <img src="../../../../assets/icons/x-close.svg" alt="close" (click)="closeDialog()" />
-          </div>
-          <div class="search-container">
-            <img src="../../assets/search.svg" alt="Search" class="search-icon" />
-            <input type="text" placeholder="Search" class="search-bar" />
-          </div>
-          <div class="contacts" *ngFor="let contact of contacts">
-            <div class="contact">
-              <img src="{{ contact.img }}" alt="" />
-              <p>{{ contact.name }}</p>
+        <div *ngIf="!openNewChat">
+          <div class="top-bar">
+            <div class="contact-head">
+              <h1>All Contacts</h1>
+              <img src="../../../../assets/icons/x-close.svg" alt="close" (click)="closeDialog()" />
             </div>
-            <mat-checkbox class="example-margin"></mat-checkbox>
-          </div>
-          <button class="new-chat-btn">Start Chat</button>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="selectedTab === 1">
-        <!-- user details -->
-        <div class="kgs header">
-          <div class="kgs">
-            <img src="../../../../assets/images/Normal.png" alt="" />
-            <div class="header-txt">
-              <p>Victoria Peter</p>
-              <span>Finance sspanecialist</span>
+            <div class="search-container">
+              <img src="../../assets/search.svg" alt="Search" class="search-icon" />
+              <input type="text" placeholder="Search" class="search-bar" />
             </div>
           </div>
-          <div class="header-img">
-            <img src="../../../../assets/icons/calll.png" alt="" />
-            <img src="../../../../assets/icons/vvid.png" alt="" />
-            <img src="../../../../assets/icons/xx.png" alt="" />
-          </div>
-        </div>
-        <div class="new-chat-container">
-          <!-- chat started -->
-
-          <div class="chat-window" #chatWindow>
-            <div
-              *ngFor="let message of messages"
-              class="message"
-              [ngClass]="{ sent: message.sender === 'You', received: message.sender !== 'You' }"
-            >
-              <div class="kgs">
-                <div class="sender">{{ message.sender }}</div>
-                <div class="timestamp">{{ message.timestamp | date : 'shortTime' }}</div>
+          <div class="">
+            <div class="contacts" *ngFor="let contact of contacts">
+              <div class="contact">
+                <img src="{{ contact.img }}" alt="" />
+                <p>{{ contact.name }}</p>
               </div>
-              <div class="sender-text">{{ message.text }}</div>
+              <mat-checkbox class="example-margin"></mat-checkbox>
+            </div>
+            <button class="new-chat-btn" (click)="startNewChat()">Start Chat</button>
+          </div>
+        </div>
+        <div *ngIf="openNewChat">
+          <!-- user details -->
+          <div class="kgs header">
+            <div class="kgs">
+              <img src="../../../../assets/images/Normal.png" alt="" />
+              <div class="header-txt">
+                <p>Victoria Peter</p>
+                <span>Finance sspanecialist</span>
+              </div>
+            </div>
+            <div class="header-img">
+              <img src="../../../../assets/icons/calll.png" alt="" />
+              <img src="../../../../assets/icons/vvid.png" alt="" />
+              <img src="../../../../assets/icons/xx.png" alt="" />
             </div>
           </div>
-          <div class="message-input">
-            <div class="message-custom">
-              <input
-                type="text"
-                [(ngModel)]="newMessage"
-                placeholder="Write a message"
-                (keydown.enter)="sendMessage()"
-              />
-
-              <div class="send-chat-btn">
-                <div class="message-custom-style">
-                  <img src="../../../../assets/icons/bold-txt.png" alt="" />
-                  <img src="../../../../assets/icons/link-icon.png" alt="" />
-                  <img src="../../../../assets/icons/pic.png" alt="" />
-                  <img src="../../../../assets/icons/mic.png" alt="" />
+          <!-- chat container -->
+          <div class="new-chat-container">
+            <ng-container *ngIf="!messageSent; else chatStarted">
+              <!-- starting new chat -->
+              <div class="main-start-convo">
+                <div>
+                  <div class="image-start-convo">
+                    <img class="img-convo" src="../../../../assets/images/new-convo.svg" alt="" />
+                  </div>
+                  <p>Start the Conversation</p>
                 </div>
-                <img (click)="sendMessage()" src="../../../../assets/icons/pink-send.png" alt="" />
+              </div>
+            </ng-container>
+            <ng-template #chatStarted>
+              <!-- chat started -->
+              <div class="chat-window" #chatWindow>
+                <div
+                  *ngFor="let message of messages"
+                  class="message"
+                  [ngClass]="{ sent: message.sender === 'You', received: message.sender !== 'You' }"
+                >
+                  <div class="kgs">
+                    <div class="sender">{{ message.sender }}</div>
+                    <div class="timestamp">{{ message.timestamp | date : 'shortTime' }}</div>
+                  </div>
+                  <div class="sender-text">{{ message.text }}</div>
+                </div>
+              </div>
+            </ng-template>
+
+            <!-- type message -->
+            <div class="message-input">
+              <div class="message-custom">
+                <input
+                  type="text"
+                  [(ngModel)]="newMessage"
+                  placeholder="Write a message"
+                  (keydown.enter)="sendMessage()"
+                />
+
+                <div class="send-chat-btn">
+                  <div class="message-custom-style">
+                    <img src="../../../../assets/icons/bold-txt.png" alt="" />
+                    <img src="../../../../assets/icons/link-icon.png" alt="" />
+                    <img src="../../../../assets/icons/pic.png" alt="" />
+                    <img src="../../../../assets/icons/mic.png" alt="" />
+                  </div>
+                  <img (click)="sendMessage()" src="../../../../assets/icons/pink-send.png" alt="" />
+                </div>
               </div>
             </div>
           </div>
-
-          <!-- starting new chat -->
         </div>
       </ng-container>
-      <ng-container *ngIf="selectedTab === 2"> tab 3 </ng-container>
-      <ng-container *ngIf="selectedTab === 3"> tab 4 </ng-container>
+      <ng-container *ngIf="selectedTab === 1">tab 2 </ng-container>
+      <ng-container *ngIf="selectedTab === 2">
+        <div *ngIf="!openNewChat">
+          <div class="top-bar">
+            <div class="contact-head">
+              <h1>All Contacts</h1>
+              <img src="../../../../assets/icons/x-close.svg" alt="close" (click)="closeDialog()" />
+            </div>
+            <div class="search-container">
+              <img src="../../assets/search.svg" alt="Search" class="search-icon" />
+              <input type="text" placeholder="Search" class="search-bar" />
+            </div>
+          </div>
+          <div class="">
+            <div class="contacts" *ngFor="let contact of contacts">
+              <div class="contact">
+                <img src="{{ contact.img }}" alt="" />
+                <p>{{ contact.name }}</p>
+              </div>
+              <mat-checkbox class="example-margin"></mat-checkbox>
+            </div>
+            <button class="new-chat-btn" (click)="startNewChat()">Start Chat</button>
+          </div>
+        </div>
+        <div *ngIf="openNewChat">
+          <!-- user details -->
+          <div class="kgs header">
+            <div class="kgs">
+              <img src="../../../../assets/images/Normal.png" alt="" />
+              <div class="header-txt">
+                <p>Victoria Peter</p>
+                <span>Finance sspanecialist</span>
+              </div>
+            </div>
+            <div class="header-img">
+              <img src="../../../../assets/icons/calll.png" alt="" />
+              <img src="../../../../assets/icons/vvid.png" alt="" />
+              <img src="../../../../assets/icons/xx.png" alt="" />
+            </div>
+          </div>
+          <!-- chat container -->
+          <div class="new-chat-container">
+            <ng-container *ngIf="!messageSent; else chatStarted">
+              <!-- starting new chat -->
+              <div class="main-start-convo">
+                <div>
+                  <div class="image-start-convo">
+                    <img class="img-convo" src="../../../../assets/images/new-convo.svg" alt="" />
+                  </div>
+                  <p>Start the Conversation</p>
+                </div>
+              </div>
+            </ng-container>
+            <ng-template #chatStarted>
+              <!-- chat started -->
+              <div class="chat-window" #chatWindow>
+                <div
+                  *ngFor="let message of messages"
+                  class="message"
+                  [ngClass]="{ sent: message.sender === 'You', received: message.sender !== 'You' }"
+                >
+                  <div class="kgs">
+                    <div class="sender">{{ message.sender }}</div>
+                    <div class="timestamp">{{ message.timestamp | date : 'shortTime' }}</div>
+                  </div>
+                  <div class="sender-text">{{ message.text }}</div>
+                </div>
+              </div>
+            </ng-template>
+
+            <!-- type message -->
+            <div class="message-input">
+              <div class="message-custom">
+                <input
+                  type="text"
+                  [(ngModel)]="newMessage"
+                  placeholder="Write a message"
+                  (keydown.enter)="sendMessage()"
+                />
+
+                <div class="send-chat-btn">
+                  <div class="message-custom-style">
+                    <img src="../../../../assets/icons/bold-txt.png" alt="" />
+                    <img src="../../../../assets/icons/link-icon.png" alt="" />
+                    <img src="../../../../assets/icons/pic.png" alt="" />
+                    <img src="../../../../assets/icons/mic.png" alt="" />
+                  </div>
+                  <img (click)="sendMessage()" src="../../../../assets/icons/pink-send.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="selectedTab === 3">
+        <div>
+          <!-- user details -->
+          <div class="kgs header">
+            <div class="kgs">
+              <img src="../../../../assets/icons/ash.png" alt="" />
+              <div class="header-txt">
+                <p>General</p>
+                <span>12 Members</span>
+              </div>
+            </div>
+            <div class="header-img">
+              <img src="../../../../assets/icons/calll.png" alt="" />
+              <img src="../../../../assets/icons/vvid.png" alt="" />
+              <img src="../../../../assets/icons/xx.png" alt="" />
+            </div>
+          </div>
+          <!-- chat container -->
+          <div class="new-chat-container">
+            <div>
+              <!-- chat started -->
+              <div class="chat-window">
+                <!-- hardcoded message -->
+                <div class="message-container">
+                  <div><img src="../../../../assets/images/Normal.png" alt="" /></div>
+                  <div class="message sent">
+                    <div class="kgs">
+                      <div class="sender">Timothy Ese</div>
+                      <div class="timestamp">10:00 AM</div>
+                    </div>
+                    <div class="sender-text">Hello, have you thought about the offer?</div>
+                  </div>
+                </div>
+                <div class="message-container">
+                  <div class="message received">
+                    <div class="kgs">
+                      <div class="sender">Timothy Ese</div>
+                      <div class="timestamp">10:00 AM</div>
+                    </div>
+                    <div class="sender-text">Hello, have you thought about the offer?</div>
+                  </div>
+                  <div><img src="../../../../assets/images/Normal.png" alt="" /></div>
+                </div>
+                <div class="message-container">
+                  <div><img src="../../../../assets/images/Normal.png" alt="" /></div>
+                  <div class="message sent">
+                    <div class="kgs">
+                      <div class="sender">Timothy Ese</div>
+                      <div class="timestamp">10:00 AM</div>
+                    </div>
+                    <div class="sender-text">Hello, have you thought about the offer?</div>
+                  </div>
+                </div>
+                <div class="message-container">
+                  <div class="message received">
+                    <div class="kgs">
+                      <div class="sender">Timothy Ese</div>
+                      <div class="timestamp">10:00 AM</div>
+                    </div>
+                    <div class="sender-text">Hello, have you thought about the offer?</div>
+                  </div>
+                  <div><img src="../../../../assets/images/Normal.png" alt="" /></div>
+                </div>
+                <!--  -->
+                <div class="message-container" *ngFor="let message of messages">
+                  <div><img src="../../../../assets/images/Normal.png" alt="" /></div>
+                  <div
+                    class="message"
+                    [ngClass]="{ sent: message.sender === 'You', received: message.sender !== 'You' }"
+                  >
+                    <div class="kgs">
+                      <div class="sender">{{ message.sender }}</div>
+                      <div class="timestamp">{{ message.timestamp | date : 'shortTime' }}</div>
+                    </div>
+                    <div class="sender-text">{{ message.text }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- type message -->
+            <div class="message-input">
+              <div class="message-custom">
+                <input
+                  type="text"
+                  [(ngModel)]="newMessage"
+                  placeholder="Write a message"
+                  (keydown.enter)="sendMessage()"
+                />
+
+                <div class="send-chat-btn">
+                  <div class="message-custom-style">
+                    <img src="../../../../assets/icons/bold-txt.png" alt="" />
+                    <img src="../../../../assets/icons/link-icon.png" alt="" />
+                    <img src="../../../../assets/icons/pic.png" alt="" />
+                    <img src="../../../../assets/icons/mic.png" alt="" />
+                  </div>
+                  <img (click)="sendMessage()" src="../../../../assets/icons/pink-send.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
     </div>
   </div>
 </div>

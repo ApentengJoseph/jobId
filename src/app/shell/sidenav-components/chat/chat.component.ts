@@ -19,7 +19,9 @@ interface Message {
 })
 export class ChatComponent implements OnInit {
   @ViewChild('chatWindow') chatWindowRef!: ElementRef;
-
+  openNewChat: boolean = false;
+  messageSent: boolean = false;
+  selectedTabCircle: boolean = false;
   messages: Message[] = [];
   newMessage: string = '';
   senderImg: string = '';
@@ -71,6 +73,57 @@ export class ChatComponent implements OnInit {
       user: 'Timothy Ese',
       text: '“I am not sure about that',
       time: '12:36',
+    },
+    {
+      img: '../../../../assets/images/avatar.png',
+      user: 'Victoria Peter',
+      text: '“I am not sure about that',
+      time: '12:36',
+    },
+    {
+      img: '../../../../assets/images/Normal.png',
+      user: 'Timothy Ese',
+      text: '“I am not sure about that',
+      time: '12:36',
+    },
+    {
+      img: '../../../../assets/images/avatar.png',
+      user: 'Victoria Peter',
+      text: '“I am not sure about that',
+      time: '12:36',
+    },
+    {
+      img: '../../../../assets/images/Normal.png',
+      user: 'Timothy Ese',
+      text: '“I am not sure about that',
+      time: '12:36',
+    },
+  ];
+  circleDetails = [
+    {
+      img: '../../../../assets/icons/ash.png',
+      user: 'General',
+      text: '“Take a chill pill” was sent to General',
+    },
+    {
+      img: '../../../../assets/icons/lock-.svg',
+      user: 'Welcome',
+      text: '“Ralph Jesse was onboarded successfully',
+    },
+    {
+      img: '../../../../assets/icons/ash.png',
+      user: 'Design Team',
+      text: '“I am not sure about that',
+    },
+    {
+      img: '../../../../assets/icons/ash.png',
+      user: 'All Team Members',
+      text: '“I am not sure about that',
+    },
+    {
+      img: '../../../../assets/icons/ash.png',
+      user: 'Design Team',
+      text: '“I am not sure about that',
     },
   ];
   contacts = [
@@ -139,6 +192,7 @@ export class ChatComponent implements OnInit {
         this.scrollToBottom();
       }, 0);
     }
+    this.messageSent = true;
   }
 
   receiveMessage(message: string) {
@@ -152,5 +206,8 @@ export class ChatComponent implements OnInit {
     try {
       this.chatWindowRef.nativeElement.scrollTop = this.chatWindowRef.nativeElement.scrollHeight;
     } catch (err) {}
+  }
+  startNewChat() {
+    this.openNewChat = !this.openNewChat;
   }
 }

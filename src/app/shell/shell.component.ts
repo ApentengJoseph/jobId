@@ -17,12 +17,11 @@ import { JobFolderComponent } from './sidenav-components/job-folder/job-folder.c
 })
 export class ShellComponent implements OnInit {
   public menuItems = [
-    { name: 'Dashboard', icon: '../../assets/grid-3.png', route: '/home' },
     { name: 'JobBoard', icon: '../../assets/briefcase.png', route: '/job-board' },
     { name: 'Candidate', icon: '../../assets/personalcard.png', route: '/candidate' },
     { name: 'Recruitment', icon: '../../assets/calendar-2.png', route: '/recruitment' },
     { name: 'Message', icon: '../../assets/messages-3.png', route: '/chat' },
-    { name: 'Notification', icon: '../../assets/setting-2.png', route: '/settings' },
+    { name: 'Notification', icon: '../../assets/notification.png', route: '/settings' },
   ];
 
   public sideItems = [
@@ -84,18 +83,8 @@ export class ShellComponent implements OnInit {
     return credentials ? credentials.username : null;
   }
 
-  openSidenav(): void {
-    if (this.sideNav) {
-      this.sideNav.open();
-      this.isSideNavOpen = !this.isSideNavOpen;
-    }
-  }
-
-  closeSidenav(): void {
-    if (this.sideNav) {
-      this.sideNav.close();
-      this.isSideNavOpen = !this.isSideNavOpen;
-    }
+  toggleSideNav(): void {
+    this.isSideNavOpen = !this.isSideNavOpen;
   }
 
   get isMobile(): boolean {
@@ -109,21 +98,21 @@ export class ShellComponent implements OnInit {
     this.dialog.open(CalenderComponent, {
       width: '350px',
       height: '100vh',
-      position: { left: '5%' },
+      position: { right: '5%' },
     });
   }
   openChat() {
     this.dialog.open(ChatComponent, {
       // width: '694px',
       height: '100vh',
-      position: { left: '5%' },
+      position: { right: '5%' },
     });
   }
   openJobFolder() {
     this.dialog.open(JobFolderComponent, {
       width: '694px',
       height: '100vh',
-      position: { left: '5%' },
+      position: { right: '5%' },
     });
   }
 }

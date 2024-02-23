@@ -6,7 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '@shared';
 import { MaterialModule } from '@app/material.module';
 import { RecruitmentRoutingModule } from './recruitment-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { RecruitmentComponent } from './recruitment.component';
 @NgModule({
@@ -15,6 +15,7 @@ import { RecruitmentComponent } from './recruitment.component';
     ReactiveFormsModule,
     NgApexchartsModule,
     TranslateModule,
+    FormsModule,
     SharedModule,
     FlexLayoutModule,
     MaterialModule,

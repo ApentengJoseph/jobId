@@ -11,5 +11,12 @@ import { QuoteService } from './quote.service';
 export class CandidateComponent implements OnInit {
   constructor() {}
 
+  candidates = [
+    { id: 'JB78956', name: 'John Scarlet', role: 'Finance Specialist', rating: 4.0, addedDaysAgo: 3 },
+    { id: 'AB12345', name: 'Jane Doe', role: 'Data Analyst', rating: 4.5, addedDaysAgo: 5 },
+    { id: 'CD67890', name: 'Steve Smith', role: 'Project Manager', rating: 3.8, addedDaysAgo: 10 },
+    // ... other candidates
+  ];
+
   ngOnInit() {}
 }

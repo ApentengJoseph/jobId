@@ -1,5 +1,5 @@
 .container {
-  overflow: hidden;
+  overflow-y: hidden;
 }
 .grid-container {
   display: grid;
@@ -12,6 +12,7 @@
 .aside-div {
   box-shadow: 4px 0px 6px -1px rgba(0, 0, 0, 0.1);
   padding: 10px 20px;
+
   p span img {
     width: unset;
     height: unset;
@@ -20,6 +21,30 @@
     color: #7e94b4;
   }
 }
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+}
+.scroll-div {
+  max-height: 600px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 0;
+}
+// .chat-stick {
+//   position: sticky;
+//   top: 0;
+//   z-index: 2;
+//   background-color: white;
+// }
+// .content-scroll {
+//   max-height: calc(100vh - 160px);
+//   overflow-x: hidden;
+//     overflow-y: auto;
+// }
+
 .main {
   display: flex;
   justify-content: space-between;
@@ -34,15 +59,18 @@
   }
   .all {
     color: #7e94b4;
+    cursor: pointer;
     // &active{
     //     background-color: #002F55;
     //     color: white;
     // }
   }
   .brit {
+    cursor: pointer;
     color: #e3556d;
   }
   .per {
+    cursor: pointer;
     background: linear-gradient(
       154.3deg,
       rgba(0, 140, 254, 0.63) 6.55%,
@@ -56,6 +84,7 @@
     color: transparent; /* Hide the actual text */
   }
   .cir {
+    cursor: pointer;
     color: #0075d4;
   }
 }
@@ -83,6 +112,9 @@
   }
 }
 .border-b {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   border-bottom: 2px solid #e0e9f4;
   padding-bottom: 20px;
 }
@@ -174,8 +206,8 @@
   margin-bottom: 20px;
 }
 img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 .contact-head {
   h1 {
@@ -188,6 +220,9 @@ img {
   }
 }
 .header-img {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   img {
     width: unset;
     height: unset;
@@ -227,15 +262,26 @@ img {
       align-self: flex-end;
       padding: 15px;
       border-radius: 20px;
+      width: 100%;
     }
 
     &.received {
       background-color: #f8f8f8;
       color: #596780;
       border: 2px solid #f8f8f8;
+      align-self: flex-end;
+      padding: 15px;
+      border-radius: 20px;
+      width: 100%;
     }
   }
 }
+.message-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 .message-custom {
   border: 1px solid #e0e9f4;
   border-radius: 8px;
@@ -269,4 +315,39 @@ img {
 
     border: none;
   }
+}
+.main-start-convo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  p {
+    text-align: center;
+    font-weight: 600;
+    margin: 0;
+  }
+}
+
+.image-start-convo {
+  width: 200px;
+  height: 200px;
+}
+
+.img-convo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* Adjustments for scrollbar appearance */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #aee3f6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
 }

@@ -92,28 +92,7 @@
 <div fxFlex style="position: relative">
   <mat-sidenav-container>
     <!--right side nav  -->
-    <mat-sidenav
-      #sidenav
-      [mode]="isMobile ? 'over' : 'side'"
-      [opened]="!isMobile"
-      [disableClose]="!isMobile"
-      ngClass.gt-sm="has-border"
-    >
-      <mat-toolbar>
-        <!-- <div fxFlex></div> -->
-        <div>
-          <button mat-icon-button>
-            <img
-              *ngIf="isSideNavOpen"
-              (click)="closeSidenav()"
-              style="width: 20px; height: 20px"
-              src="../../assets/icons/arrow-direction-left.png"
-              alt="arrow"
-            />
-          </button>
-        </div>
-      </mat-toolbar>
-
+    <mat-sidenav>
       <aside class="r-side">
         <ul>
           <li class="" (click)="openCalender()">
@@ -154,10 +133,9 @@
         </ul>
       </aside>
     </mat-sidenav>
+
     <mat-sidenav-content>
       <mat-toolbar class="mat-elevation-z6">
-        <mat-icon *ngIf="!isSideNavOpen" (click)="openSidenav()">arrow_forward_ios</mat-icon>
-
         <header class="header">
           <aside class="sidebar">
             <ul class="nav">
@@ -239,7 +217,74 @@
         </header>
       </mat-toolbar>
 
-      <router-outlet></router-outlet>
+      <div class="content-container">
+        <div class="main-contents">
+          <router-outlet></router-outlet>
+        </div>
+
+        <nav>
+          <div class="right-side-nav">
+            <div class="right-side-content">
+              <button
+                mat-icon-button
+                class="right-side-top-btn"
+                [ngClass]="{ 'right-side-top-btn-active': !isSideNavOpen }"
+              >
+                <img (click)="toggleSideNav()" src="../../assets/icons/arrow-direction-left.svg" alt="arrow" />
+              </button>
+
+              <ng-container *ngIf="isSideNavOpen">
+                <div class="right-side-icons">
+                  <aside class="r-side">
+                    <ul>
+                      <li class="" (click)="openCalender()">
+                        <a class="">
+                          <img src="../../assets/icons/icon-1.png" alt="icon" />
+                        </a>
+                      </li>
+                      <!--  -->
+                      <li class="" (click)="openChat()">
+                        <a class="">
+                          <img src="../../assets/icons/icon-2.png" alt="icon" />
+                        </a>
+                      </li>
+                      <!--  -->
+                      <li class="" (click)="openJobFolder()">
+                        <a class="">
+                          <img src="../../assets/icons/icon-3.png" alt="icon" />
+                        </a>
+                      </li>
+                      <!--  -->
+                      <li class="">
+                        <a class="">
+                          <img src="../../assets/icons/icon-4.png" alt="icon" />
+                        </a>
+                      </li>
+                      <!--  -->
+                      <li class="">
+                        <a class="">
+                          <img src="../../assets/icons/icon-5.png" alt="icon" />
+                        </a>
+                      </li>
+                      <!--  -->
+                      <li class="">
+                        <a class="">
+                          <img src="../../assets/icons/icon-6.png" alt="icon" />
+                        </a>
+                      </li>
+                    </ul>
+                  </aside>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </nav>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
+<!-- <app-floating-chat
+  *ngIf="showFloatingChat"
+  (toggleChat)="toggleFloatingchat($event)"
+>
+</app-floating-chat> -->
