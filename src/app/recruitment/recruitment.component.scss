@@ -7,31 +7,36 @@
 }
 
 .job-card {
-  background-color: #fff;
+  background-color: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 10.199999809265137px 0px #0000001a;
   font-family: "Arial", sans-serif;
   overflow: hidden;
-  max-width: 340px; /* Adjust width as needed */
+  padding: 10px;
+  width: 30%;
 }
 
 .job-header {
   padding: 16px;
-  background-color: #f4f4f4;
+  /* background-color: #f4f4f4; */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .job-title {
-  font-size: 20px;
-  color: #333;
+  font-size: 16px;
   margin: 0;
+  color: #1a202c;
+  line-height: 21px;
+  font-weight: 600;
 }
 
 .time-posted {
   font-size: 12px;
-  color: #666;
+  color: #90a3bf;
+  font-weight: 400;
+  line-height: 15px;
 }
 
 .job-image img {
@@ -44,7 +49,7 @@
   display: flex;
   justify-content: space-around;
   padding: 16px;
-  background-color: #f8f8f8;
+  /* background-color: #f8f8f8;*/
 }
 
 .status-item {
@@ -59,7 +64,7 @@
   cursor: pointer;
   font-size: 14px;
   margin-bottom: 8px;
-  color: #333;
+  color: #ffffff;
 }
 
 .number {
@@ -69,19 +74,19 @@
 
 /* Specific styles for buttons */
 .applicant {
-  background-color: #ffcccb;
+  background-color: #ea3970;
 }
 .shortlist {
-  background-color: #f0e68c;
+  background-color: #b585e6;
 }
 .interview {
-  background-color: #add8e6;
+  background-color: #fab86b;
 }
 .offer {
-  background-color: #90ee90;
+  background-color: transparent;
 }
 .hired {
-  background-color: #dda0dd;
+  background-color: transparent;
 }
 
 /* Ensure buttons have sufficient contrast */
@@ -89,4 +94,159 @@
 .status-button:focus {
   outline: none;
   box-shadow: 0 0 0 2px #ddd;
+}
+
+.line {
+  width: 100%;
+  border-bottom: 1px solid #e0e9f4;
+  margin-top: 1rem;
+}
+
+.job {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+button.navigation {
+  /* box-shadow: 0px 1px 10.199999809265137px 0px #0000001A; */
+  height: 47px;
+  width: 147px;
+  background-color: transparent;
+  border: none;
+  color: #ea3970;
+  border-bottom: 2px solid #ea3970;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+button.navigation:hover {
+  background-color: #ea3970;
+  color: #fff;
+}
+button.scorecard {
+  /* box-shadow: 0px 1px 10.199999809265137px 0px #0000001A; */
+  height: 47px;
+  width: 147px;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  color: #001c33;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.create-button {
+  margin-top: 1rem;
+}
+
+.navigation-btn {
+  display: flex;
+}
+
+.create-btn {
+  width: 197px;
+  height: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #596780;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+
+  img {
+    margin-right: 0.5rem;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+}
+
+.team-schedule {
+  width: 197px;
+  height: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #596780;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+
+  img {
+    margin-left: 0.5rem;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+}
+
+.calendar-slider {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+.slider-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  margin: 0 10px;
+}
+
+.years,
+.months {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.year,
+.month {
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+  background-color: #e7e7e7;
+  border-radius: 15px;
+}
+
+.year:last-child,
+.month:last-child {
+  margin-right: 0;
+}
+
+.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Hide scrollbar for cleaner design */
+.years::-webkit-scrollbar,
+.months::-webkit-scrollbar {
+  display: none;
+}
+
+.years,
+.months {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

@@ -2,37 +2,132 @@
   <div class="header">
     <div class="btns">
       <button class="navigation">My Calender</button>
-      <button class="navigation">Scorecard</button>
+      <button class="scorecard">Scorecard</button>
     </div>
 
-    <div class="job-card">
-      <div class="job-header">
-        <h2 class="job-title">Front end developer</h2>
-        <span class="time-posted">2days ago</span>
+    <div class="job">
+      <div class="job-card">
+        <div class="job-header">
+          <h2 class="job-title">Front end developer</h2>
+          <span class="time-posted">2days ago</span>
+        </div>
+        <div class="job-image">
+          <img src="../../assets/edef.png" alt="Front end developer" />
+        </div>
+        <div class="line"></div>
+        <div class="job-status">
+          <div class="status-item">
+            <button class="status-button applicant">Applicant</button>
+            <span class="number">125</span>
+          </div>
+          <div class="status-item">
+            <button class="status-button shortlist">Shortlist</button>
+            <span class="number">25</span>
+          </div>
+          <div class="status-item">
+            <button class="status-button interview">interview</button>
+            <span class="number">5</span>
+          </div>
+          <div class="status-item">
+            <button class="status-button offer">Offer</button>
+          </div>
+          <div class="status-item">
+            <button class="status-button hired">Hired</button>
+          </div>
+        </div>
       </div>
-      <div class="job-image">
-        <img src="../../assets/edef.png" alt="Front end developer" />
+      <div class="job-card">
+        <div class="job-header">
+          <h2 class="job-title">Front end developer</h2>
+          <span class="time-posted">2days ago</span>
+        </div>
+        <div class="job-image">
+          <img src="../../assets/edef.png" alt="Front end developer" />
+        </div>
+        <div class="line"></div>
+        <div class="job-status">
+          <div class="status-item">
+            <button class="status-button shortlist">Applicant</button>
+            <span class="number">125</span>
+          </div>
+          <div class="status-item">
+            <button class="status-button shortlist">Shortlist</button>
+            <span class="number">25</span>
+          </div>
+          <div class="status-item">
+            <button class="status-button shortlist">interview</button>
+            <span class="number">5</span>
+          </div>
+          <div class="status-item">
+            <button class="status-button offer">Offer</button>
+          </div>
+          <div class="status-item">
+            <button class="status-button hired">Hired</button>
+          </div>
+        </div>
       </div>
-      <div class="job-status">
-        <div class="status-item">
-          <button class="status-button applicant">Applicant</button>
-          <span class="number">125</span>
+      <div class="job-card">
+        <div class="job-header">
+          <h2 class="job-title">Front end developer</h2>
+          <span class="time-posted">2days ago</span>
         </div>
-        <div class="status-item">
-          <button class="status-button shortlist">Shortlist</button>
-          <span class="number">25</span>
+        <div class="job-image">
+          <img src="../../assets/edef.png" alt="Front end developer" />
         </div>
-        <div class="status-item">
-          <button class="status-button interview">interview</button>
-          <span class="number">5</span>
-        </div>
-        <div class="status-item">
-          <button class="status-button offer">Offer</button>
-        </div>
-        <div class="status-item">
-          <button class="status-button hired">Hired</button>
+        <div class="line"></div>
+        <div class="job-status">
+          <div class="status-item">
+            <button class="status-button interview">Applicant</button>
+            <span class="number">125</span>
+          </div>
+          <div class="status-item">
+            <button class="status-button interview">Shortlist</button>
+            <span class="number">25</span>
+          </div>
+          <div class="status-item">
+            <button class="status-button interview">interview</button>
+            <span class="number">5</span>
+          </div>
+          <div class="status-item">
+            <button class="status-button offer">Offer</button>
+          </div>
+          <div class="status-item">
+            <button class="status-button hired">Hired</button>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="create-button">
+    <div class="navigation-btn">
+      <button class="create-btn">
+        <img src="../../assets/add-rename.png" alt="plus" />
+        <p>Create Meeting</p>
+      </button>
+      <button class="team-schedule">
+        <p>Team schedule</p>
+        <img src="../../assets/chevron-up.png" alt="plus" />
+      </button>
+    </div>
+    <div class="calendar-slider">
+      <button class="slider-button prev" (click)="changeYear(-1)">&lt;</button>
+      <div class="years">
+        <span class="year" *ngFor="let year of years" [class.active]="year === selectedYear" (click)="selectYear(year)">
+          {{ year }}
+        </span>
+      </div>
+      <div class="months">
+        <span
+          class="month"
+          *ngFor="let month of months"
+          [class.active]="month === selectedMonth"
+          (click)="selectMonth(month)"
+        >
+          {{ month }}
+        </span>
+      </div>
+      <button class="slider-button next" (click)="changeYear(1)">&gt;</button>
     </div>
   </div>
 </div>
