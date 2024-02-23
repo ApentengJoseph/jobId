@@ -82,18 +82,8 @@ export class ShellComponent implements OnInit {
     return credentials ? credentials.username : null;
   }
 
-  openSidenav(): void {
-    if (this.sideNav) {
-      this.sideNav.open();
-      this.isSideNavOpen = !this.isSideNavOpen;
-    }
-  }
-
-  closeSidenav(): void {
-    if (this.sideNav) {
-      this.sideNav.close();
-      this.isSideNavOpen = !this.isSideNavOpen;
-    }
+  toggleSideNav(): void {
+    this.isSideNavOpen = !this.isSideNavOpen;
   }
 
   get isMobile(): boolean {
@@ -107,7 +97,7 @@ export class ShellComponent implements OnInit {
     this.dialog.open(CalenderComponent, {
       width: '350px',
       height: '100vh',
-      position: { left: '5%' },
+      position: { right: '5%' },
     });
   }
 }

@@ -1,13 +1,53 @@
 :host {
   display: flex;
   flex: 1;
+  .mat-drawer-content {
+    margin: 0 !important;
+  }
 }
 
-.mat-sidenav {
-  min-width: 30px;
-  max-width: 5%;
-  // height: 100vh;
-  position: fixed;
+.right-side {
+  &-nav {
+    min-height: 100vh;
+    background: #fff;
+    height: 100%;
+    width: 100px;
+    padding: 1rem 0 0rem;
+  }
+  &-content {
+    height: 100%;
+    text-align: center;
+  }
+  &-top-btn {
+    margin-top: 2rem;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+    &-active {
+      background: skyblue;
+      width: 50px;
+      height: 50px;
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px,
+        rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    }
+  }
+  &-icons {
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2rem;
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+.content-container {
+  display: flex;
+  .main-contents {
+    flex: 1;
+    gap: 2rem;
+  }
 }
 
 .has-border {
