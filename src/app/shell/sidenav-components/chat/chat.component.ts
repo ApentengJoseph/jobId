@@ -186,7 +186,12 @@ export class ChatComponent implements OnInit {
   }
   sendMessage() {
     if (this.newMessage && this.newMessage.trim() !== '') {
-      this.messages.push({ sender: 'You', text: this.newMessage, timestamp: new Date(), image: this.senderImg });
+      this.messages.push({
+        sender: 'You',
+        text: this.newMessage,
+        timestamp: new Date(),
+        image: this.senderImg,
+      });
       this.newMessage = '';
       setTimeout(() => {
         this.scrollToBottom();
@@ -196,7 +201,7 @@ export class ChatComponent implements OnInit {
   }
 
   receiveMessage(message: string) {
-    this.messages.push({ sender: 'Friend', text: message, timestamp: new Date(), image: this.senderImg });
+    this.messages.push({ sender: '', text: message, timestamp: new Date(), image: this.senderImg });
     setTimeout(() => {
       this.scrollToBottom();
     }, 0);

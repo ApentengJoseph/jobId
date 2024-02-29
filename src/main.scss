@@ -30,3 +30,19 @@ body {
   font-family: "Hanken Grotesk", sans-serif !important;
   //overflow-y: scroll;
 }
+.mat-dialog-container {
+  padding: 0px !important;
+}
+/* Adjustments for scrollbar appearance */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #aee3f6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}

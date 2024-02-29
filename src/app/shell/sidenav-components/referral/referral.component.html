@@ -1,0 +1,54 @@
+<div class="container">
+  <div>
+    <div class="top-bar">
+      <div class="fxflex">
+        <!-- <img src="../../../../assets/icons/arrow-left.png" alt="" /> -->
+        <p>Referral</p>
+      </div>
+      <img src="../../../../assets/icons/xx.png" alt="" />
+    </div>
+    <div class="aside">
+      <div>
+        <div class="top-bar">
+          <div class="fxflex">
+            <img src="../../../../assets/icons/wallet.png" alt="" />
+            <span>Wallet</span>
+          </div>
+          <div class="fxflex ref">
+            <p>My referral code</p>
+            <img src="../../../../assets/icons/copy.png" alt="" />
+          </div>
+        </div>
+        <div class="wallet fxflex">
+          <p>0.00021JC</p>
+          <img src="../../../../assets/icons/eyeee.png" alt="" />
+        </div>
+      </div>
+      <div class="tb"></div>
+      <div class="mid">
+        <p>See Top 10 Earners</p>
+      </div>
+      <div class="list-earners">
+        <div *ngFor="let earner of earners" class="list-earner">
+          <div class="fxflex">
+            <img src="assets/images/avatar.png" alt="" />
+            <div>
+              <p>{{ earner.name }}</p>
+              <span>{{ earner.chains }}</span>
+            </div>
+          </div>
+          <div class="user-images relative">
+            <div
+              *ngFor="let user of users; let i = index"
+              class="contain"
+              [style.transform]="'translateX(' + i * 12 + 'px)'"
+            >
+              <img [src]="user.image" alt="User Image" />
+            </div>
+          </div>
+          <div><img [src]="earner.img" alt="" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

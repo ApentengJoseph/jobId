@@ -8,10 +8,10 @@
           <span>Chat</span>
         </p>
         <div class="main">
-          <p class="all" (click)="selectTab(0)">All</p>
-          <p class="brit" (click)="selectTab(1)">Britney</p>
-          <p class="per" (click)="selectTab(2)">Personal</p>
-          <p class="cir" (click)="selectTab(3)">Circle</p>
+          <div class="all" [ngClass]="{ 'all-active': selectedTab === 0 }" (click)="selectTab(0)">All</div>
+          <div class="brit" [ngClass]="{ 'brit-active': selectedTab === 1 }" (click)="selectTab(1)">Britney</div>
+          <div class="per" [ngClass]="{ 'per-active': selectedTab === 2 }" (click)="selectTab(2)">Personal</div>
+          <div class="cir" [ngClass]="{ 'cir-active': selectedTab === 3 }" (click)="selectTab(3)">Circle</div>
         </div>
         <div class="search-container">
           <img src="../../assets/search.svg" alt="Search" class="search-icon" />
@@ -21,26 +21,26 @@
       </div>
       <!-- scrollable -->
       <!-- if selected tab is all and personal -->
-      <div class="scroll-div" *ngIf="selectedTab === 0 || selectedTab === 2">
+      <div class="scroll-div" *ngIf="selectedTab === 0 || selectedTab === 1 || selectedTab === 2">
         <div class="chat-container" *ngFor="let item of chatDetails">
           <div class="kgs">
             <img src="{{ item.img }}" alt="" />
             <div class="chat-text">
               <p>{{ item.user }}</p>
-              <span>{{ item.text }}</span>
+              <p class="custom-text">{{ item.text }}</p>
             </div>
           </div>
           <span>{{ item.time }}</span>
         </div>
       </div>
       <!-- if selected tab is circle -->
-      <div *ngIf="selectedTab === 3">
+      <div class="scroll-div" *ngIf="selectedTab === 3">
         <div class="chat-container" *ngFor="let item of circleDetails">
           <div class="kgs">
             <img src="{{ item.img }}" alt="" />
             <div class="chat-text">
               <p>{{ item.user }}</p>
-              <span>{{ item.text }}</span>
+              <p class="custom-text">{{ item.text }}</p>
             </div>
           </div>
           <span></span>
@@ -141,7 +141,81 @@
           </div>
         </div>
       </ng-container>
-      <ng-container *ngIf="selectedTab === 1">tab 2 </ng-container>
+      <ng-container *ngIf="selectedTab === 1">
+        <div class="kgs header">
+          <div class="kgs">
+            <img src="../../../../assets/images/britney.png" alt="" />
+            <div class="header-txt">
+              <p>Britney</p>
+              <span>AI Assistant</span>
+            </div>
+          </div>
+          <div class="header-img">
+            <img src="../../../../assets/icons/pink-mic.png" alt="" />
+            <img src="../../../../assets/icons/xx.png" alt="" />
+          </div>
+        </div>
+        <!--  -->
+        <div class="new-chat-container">
+          <div>
+            <!-- chat started -->
+            <div class="chat-window">
+              <!-- hardcoded message -->
+              <div class="message-container">
+                <div class="message sent">
+                  <div class="kgs"></div>
+                  <div class="sender-text">Create a to-do for me for 5 PM</div>
+                </div>
+              </div>
+              <div class="message-container">
+                <div class="message received">
+                  <div class="kgs"></div>
+                  <div class="sender-text">Who would you like to do ?</div>
+                </div>
+              </div>
+              <div class="message-container">
+                <div class="message sent">
+                  <div class="kgs"></div>
+                  <div class="sender-text">Take a nice walk around my estate</div>
+                </div>
+              </div>
+              <!--  -->
+              <div class="message-container" *ngFor="let message of messages">
+                <!-- <div><img src="../../../../assets/images/Normal.png" alt="" /></div> -->
+                <div class="message" [ngClass]="{ sent: message.sender === 'You', received: message.sender !== 'You' }">
+                  <div class="kgs">
+                    <!-- <div class="sender">{{ message.sender }}</div> -->
+                    <!-- <div class="timestamp">{{ message.timestamp | date : 'shortTime' }}</div> -->
+                  </div>
+                  <div class="sender-text">{{ message.text }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- type message -->
+          <div class="message-input">
+            <div class="message-custom">
+              <input
+                type="text"
+                [(ngModel)]="newMessage"
+                placeholder="Write a message"
+                (keydown.enter)="sendMessage()"
+              />
+
+              <div class="send-chat-btn">
+                <div class="message-custom-style">
+                  <img src="../../../../assets/icons/bold-txt.png" alt="" />
+                  <img src="../../../../assets/icons/link-icon.png" alt="" />
+                  <img src="../../../../assets/icons/pic.png" alt="" />
+                  <img src="../../../../assets/icons/mic.png" alt="" />
+                </div>
+                <img (click)="sendMessage()" src="../../../../assets/icons/pink-send.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
       <ng-container *ngIf="selectedTab === 2">
         <div *ngIf="!openNewChat">
           <div class="top-bar">

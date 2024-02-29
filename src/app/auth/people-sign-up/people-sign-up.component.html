@@ -1,0 +1,215 @@
+<div class="container" [ngStyle]="{ display: openSearch ? 'block' : 'grid', width: openSearch ? '100%' : 'auto' }">
+  <div>
+    <ng-container *ngIf="!openSearch">
+      <div>
+        <ng-container [ngTemplateOutlet]="search"> </ng-container>
+      </div>
+    </ng-container>
+    <!--  -->
+    <ng-container *ngIf="openSearch">
+      <div class="open-complete-search">
+        <ng-container [ngTemplateOutlet]="search"> </ng-container>
+      </div>
+    </ng-container>
+  </div>
+  <div *ngIf="!openSearch" class="input-container">
+    <div class="close-img">
+      <img src="../../assets/icons/xx.png" alt="" />
+    </div>
+    <div class="signin-div">
+      <div>
+        <div>
+          <h4>Sign in to your account</h4>
+          <span>To get the full experience of JobID </span>
+        </div>
+        <div [formGroup]="loginForm" class="form">
+          <div>
+            <input type="text" class="login-input" formControlName="email" placeholder="email address" />
+            <small *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+              Email is required
+            </small>
+          </div>
+          <div>
+            <div class="pass">
+              <input type="text" class="login-input" formControlName="password" placeholder="password" />
+              <img class="eye-img" src="../../../assets/icons/eye.svg" alt="" />
+            </div>
+            <small *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+              Password is required
+            </small>
+          </div>
+          <button class="continue-btn">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #search>
+  <div>
+    <div class="input-container search-div">
+      <img class="rays-img" src="../../assets/images/rays-of-color.png" alt="" />
+      <div class="search-container">
+        <img src="../../assets/search.svg" alt="Search" class="search-icon" />
+        <input type="text" placeholder="Search" class="search-bar" />
+        <button (click)="searchUser()" class="custom-select-wrapper">Search</button>
+      </div>
+    </div>
+    <div class="input-container ladder" *ngIf="!openSearch">
+      <div>
+        <p>
+          Try searching for your co-worker,<br />
+          classmate, professor, or friend.
+        </p>
+        <img class="lad-img" src="../../assets/images/ladder.png" alt="" />
+      </div>
+    </div>
+  </div>
+  <div *ngIf="openSearch">
+    <div class="result">
+      <p>30+ Results for "Divine Gideon"</p>
+    </div>
+    <div class="card">
+      <div class="input-container" (click)="openUser()">
+        <div class="img-contain">
+          <div class="fxFlex gap">
+            <div class="fx">
+              <img src="" alt="" />
+              <p>Chain</p>
+              <p>1266</p>
+            </div>
+            <div class="fx">
+              <img src="" alt="" />
+              <p>Followers</p>
+              <p>12k</p>
+            </div>
+          </div>
+        </div>
+        <div class="crd">
+          <div class="crd-user">
+            <img class="user-img" src="../../assets/images/avatar.png" alt="" />
+            <div>
+              <p>Divine Gideon</p>
+              <span>Marketing executive</span>
+            </div>
+          </div>
+          <div class="card-child">
+            <img src="../../assets/icons/location-yell.png" alt="" />
+            <p>Sweden, Uppsala</p>
+            <span></span>
+          </div>
+          <div class="card-child">
+            <img src="../../assets/icons/briefcase.png" alt="" />
+            <div>
+              <p>Zarttech Ent</p>
+              <span>Netherlands, The Hague</span>
+            </div>
+          </div>
+          <div class="card-child">
+            <img src="../../assets/icons/graduate.png" alt="" />
+            <div>
+              <p>Michigan state university</p>
+              <span>Netherlands, The Hague</span>
+            </div>
+          </div>
+          <div class="btn">
+            <button class="user-btn">Follow</button>
+          </div>
+        </div>
+      </div>
+      <div class="input-container" (click)="openUser()">
+        <div class="img-contain">
+          <div class="fxFlex gap">
+            <div class="fx">
+              <img src="" alt="" />
+              <p>Chain</p>
+              <p>1266</p>
+            </div>
+            <div class="fx">
+              <img src="" alt="" />
+              <p>Followers</p>
+              <p>12k</p>
+            </div>
+          </div>
+        </div>
+        <div class="crd">
+          <div class="crd-user">
+            <img class="user-img" src="../../assets/images/avatar.png" alt="" />
+            <div>
+              <p>Divine Gideon</p>
+              <span>Marketing executive</span>
+            </div>
+          </div>
+          <div class="card-child">
+            <img src="../../assets/icons/location-yell.png" alt="" />
+            <p>Sweden, Uppsala</p>
+            <span></span>
+          </div>
+          <div class="card-child">
+            <img src="../../assets/icons/briefcase.png" alt="" />
+            <div>
+              <p>Zarttech Ent</p>
+              <span>Netherlands, The Hague</span>
+            </div>
+          </div>
+          <div class="card-child">
+            <img src="../../assets/icons/graduate.png" alt="" />
+            <div>
+              <p>Michigan state university</p>
+              <span>Netherlands, The Hague</span>
+            </div>
+          </div>
+          <div class="btn">
+            <button class="user-btn">Follow</button>
+          </div>
+        </div>
+      </div>
+      <div class="input-container" (click)="openUser()">
+        <div class="img-contain">
+          <div class="fxFlex gap">
+            <div class="fx">
+              <img src="" alt="" />
+              <p>Chain</p>
+              <p>1266</p>
+            </div>
+            <div class="fx">
+              <img src="" alt="" />
+              <p>Followers</p>
+              <p>12k</p>
+            </div>
+          </div>
+        </div>
+        <div class="crd">
+          <div class="crd-user">
+            <img class="user-img" src="../../assets/images/avatar.png" alt="" />
+            <div>
+              <p>Divine Gideon</p>
+              <span>Marketing executive</span>
+            </div>
+          </div>
+          <div class="card-child">
+            <img src="../../assets/icons/location-yell.png" alt="" />
+            <p>Sweden, Uppsala</p>
+            <span></span>
+          </div>
+          <div class="card-child">
+            <img src="../../assets/icons/briefcase.png" alt="" />
+            <div>
+              <p>Zarttech Ent</p>
+              <span>Netherlands, The Hague</span>
+            </div>
+          </div>
+          <div class="card-child">
+            <img src="../../assets/icons/graduate.png" alt="" />
+            <div>
+              <p>Michigan state university</p>
+              <span>Netherlands, The Hague</span>
+            </div>
+          </div>
+          <div class="btn">
+            <button class="user-btn">Follow</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

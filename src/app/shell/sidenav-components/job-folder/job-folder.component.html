@@ -1,1 +1,73 @@
-<p>job-folder works!</p>
+<div class="container">
+  <div class="top-bar">
+    <p class="border-b">
+      <span><img src="../../../../assets/icons/wechat.svg" alt="" /></span>
+      <span>Job Folder</span>
+    </p>
+    <div class="main">
+      <div class="all" (click)="selectTab(0)">All</div>
+      <div class="date" (click)="selectTab(1)">Date Modified</div>
+      <div class="type" (click)="selectTab(2)">File Type</div>
+      <div class="size" (click)="selectTab(3)">Size</div>
+    </div>
+    <div class="search-container">
+      <img src="../../assets/search.svg" alt="Search" class="search-icon" />
+      <input type="text" placeholder="Search" class="search-bar" />
+    </div>
+  </div>
+  <!-- when no file in folder -->
+  <div class="">
+    <div class="main-start-convo">
+      <div>
+        <img class="img-convo" src="../../../../assets/images/new-convo.svg" alt="" />
+
+        <h3>You have no file</h3>
+        <p>Click on an existing chat or click "New folder" to create a new Conversation</p>
+      </div>
+    </div>
+    <div class="openOpt">
+      <p (click)="open()">click open</p>
+      <!-- <p (click)="close()">click close</p> -->
+      <div class="option" *ngIf="openOptions">
+        <div class="choose-opt">
+          <div>New folder</div>
+          <div>Upload file</div>
+          <div>Upload folder</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- when file incuded in folder -->
+  <div class="file-grid">
+    <div *ngFor="let items of files">
+      <div>
+        <div class="file" (click)="openFile()">
+          <img src="" alt="" />
+          <p>{{ items.fileName }}</p>
+          <p>{{ items.numberOfFiles }}</p>
+        </div>
+        <img src="" alt="" />
+      </div>
+    </div>
+  </div>
+  <!-- open file -->
+  <div *ngIf="openedFile" class="file-details">
+    <div>
+      <div *ngFor="let file of folderFile" class="file-holder">
+        <div class="holder2">
+          <img src="" alt="" />
+          <div>
+            <p>{{ file.header }}</p>
+            <p>{{ file.subText }}</p>
+          </div>
+        </div>
+        <div>
+          <p>{{ file.time }}</p>
+          <img src="" alt="" />
+        </div>
+      </div>
+      <div></div>
+    </div>
+    <div>bbb</div>
+  </div>
+</div>

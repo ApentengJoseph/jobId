@@ -9,6 +9,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CalenderComponent } from './sidenav-components/calender/calender.component';
 import { ChatComponent } from './sidenav-components/chat/chat.component';
 import { JobFolderComponent } from './sidenav-components/job-folder/job-folder.component';
+import { ReferralComponent } from './sidenav-components/referral/referral.component';
+import { JobsignComponent } from './sidenav-components/jobsign/jobsign.component';
 
 @Component({
   selector: 'app-shell',
@@ -103,14 +105,28 @@ export class ShellComponent implements OnInit {
   }
   openChat() {
     this.dialog.open(ChatComponent, {
-      // width: '694px',
+      width: '730px',
       height: '100vh',
       position: { right: '5%' },
     });
   }
   openJobFolder() {
     this.dialog.open(JobFolderComponent, {
-      width: '694px',
+      width: '370px',
+      height: '100vh',
+      position: { right: '5%' },
+    });
+  }
+  openReferral() {
+    this.dialog.open(ReferralComponent, {
+      width: '730px',
+      height: '100vh',
+      position: { right: '5%' },
+    });
+  }
+  openJobSign() {
+    this.dialog.open(JobsignComponent, {
+      width: '370px',
       height: '100vh',
       position: { right: '5%' },
     });
