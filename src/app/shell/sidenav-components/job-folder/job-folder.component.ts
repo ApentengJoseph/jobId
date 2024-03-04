@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule, LocationStrategy } from '@angular/common';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-job-folder',
@@ -10,6 +11,30 @@ import { CommonModule } from '@angular/common';
 })
 export class JobFolderComponent implements OnInit {
   files = [
+    {
+      fileName: 'Crimson files',
+      numberOfFiles: '44',
+    },
+    {
+      fileName: 'JP Kent',
+      numberOfFiles: '44',
+    },
+    {
+      fileName: 'Contract',
+      numberOfFiles: '44',
+    },
+    {
+      fileName: 'Crimson files',
+      numberOfFiles: '44',
+    },
+    {
+      fileName: 'JP Kent',
+      numberOfFiles: '44',
+    },
+    {
+      fileName: 'Contract',
+      numberOfFiles: '44',
+    },
     {
       fileName: 'Crimson files',
       numberOfFiles: '44',
@@ -58,8 +83,9 @@ export class JobFolderComponent implements OnInit {
   openOptions: boolean = false;
   openedFile: boolean = false;
   selectedTab: number = 0;
+  showFile: boolean = false;
 
-  constructor() {}
+  constructor(public dialogRef: MatDialogRef<JobFolderComponent>) {}
 
   ngOnInit(): void {}
   selectTab(index: number) {
@@ -70,5 +96,13 @@ export class JobFolderComponent implements OnInit {
   }
   openFile() {
     this.openedFile = !this.openedFile;
+    this.dialogRef.updateSize('946px', '100vh');
+  }
+  back() {
+    this.openedFile = false;
+    this.dialogRef.updateSize('370px', '100vh');
+  }
+  closeDialog() {
+    this.dialogRef.close();
   }
 }

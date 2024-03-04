@@ -1,1 +1,117 @@
-<p>jobsign works!</p>
+<div class="parent">
+  <div [ngClass]="{ children: opnSignatureDetails }">
+    <div>
+      <div class="fxFlex top-bar">
+        <p class="fx">
+          <img src="../../../../assets/icons/icon-4.png" alt="" />
+          <span>JobSign</span>
+        </p>
+        <img src="../../../../assets/icons/xx.png" alt="" />
+      </div>
+      <p>Your activities so far</p>
+      <div class="top-first-child">
+        <div class="fx">
+          <div class="top-second-child fx">
+            <div class="top-third-child fx">
+              <img src="../../../../assets/icons/green-send.png" alt="" />
+              <p>Sent</p>
+            </div>
+            <span>045</span>
+          </div>
+          <div class="top-second-child fx">
+            <div class="top-third-child fx">
+              <img src="../../../../assets/icons/green-send.png" alt="" />
+              <p>Signed</p>
+            </div>
+            <span>045</span>
+          </div>
+        </div>
+      </div>
+      <div class="fxFlex doc">
+        <div class="fx">
+          <img src="../../../../assets/icons/sign-upload.png" alt="" />
+          <p>Upload document</p>
+        </div>
+        <div class="fx">
+          <img src="../../../../assets/icons/voice-square.png" alt="" />
+          <p>Voice contract</p>
+        </div>
+      </div>
+      <!--  -->
+      <div class="search-container">
+        <img src="../../assets/search.svg" alt="Search" class="search-icon" />
+        <input type="text" placeholder="Search" class="search-bar" />
+      </div>
+      <div class="contract">
+        <div class="fx">
+          <button class="recieved-btn">Received contract</button>
+          <button class="sent-btn">Sent contract</button>
+          <img src="../../../../assets/icons/sorting.png" alt="" />
+        </div>
+      </div>
+      <div class="details" *ngFor="let data of signDetails" (click)="signatureDetails()">
+        <div class="fxFlex">
+          <h3>{{ data.typeDocument }}</h3>
+          <span>{{ data.date }}</span>
+        </div>
+        <div class="details-child">
+          <span>sent by</span>
+          <div class="fxFlex">
+            <div class="fx">
+              <img src="{{ data.img }}" alt="" />
+              <p>{{ data.name }}</p>
+            </div>
+            <div class="fx rc2">
+              <p>Received contract</p>
+              <img src="../../../../assets/icons/green-right-arrow.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <!-- <div *ngIf="opnSignatureDetails">
+
+      <div class="file-details">
+        <div class="details-header">
+          <img src="../../../../assets/icons/xx.png" alt=""  />
+          <p>Non Disclosure agreement</p>
+          <div class="zoom">
+            <p>1</p>
+            <span>/</span>
+            <span>1</span>
+          </div>
+          <div class="zoom">
+            <img src="../../../../assets/icons/minus.png" alt="" />
+            <p>100%</p>
+            <img src="../../../../assets/icons/add.svg" alt="" />
+          </div>
+        </div>
+        <div class="main-details">
+          <div class="main-start-convo">
+            <img src="../../../../assets/images/bloom.png" alt="" />
+            <h2>Bloomery</h2>
+          </div>
+          <h4>NON-DISCLOSURE AGREEMENT</h4>
+          <p>
+            This Non-disclosure agreement is entered into on saturday 14th novermber by Perry White and James Whittaker on
+            the issue of the Crypto project and all files connected to it. Disclosing party and receiving party have
+            indicated an interest in working together to ensure the success of the project, and the futherance of a
+            bussiness relationship. In connection to the parties evaluation of the cost, the aim and possible future of
+            this project, each party and their associates are bound to this document. Both parties retain proprietry
+            rights on all project deliverables as long as the terms of payment contract is upheld. Any breach of this
+            contract will attract a fine, and the loss of the contract. I, ________________ acting as the _____________ of
+            Swanta and Co. Hereby agrees to these terms and conditions and will see that they be carried out accordingly
+            and to the best of my abilities.
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <div class="empty-state">
+      <div class="fxFlex add-user">
+        <img src="../../../../assets/icons/xx.png" alt="" />
+        <button class="add-recipient-btn" (click)="addRecipient()">Add receipient</button>
+      </div>
+    </div>
+  </div>
+</div>

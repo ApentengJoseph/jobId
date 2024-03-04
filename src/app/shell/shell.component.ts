@@ -1,11 +1,11 @@
 import { Title } from '@angular/platform-browser';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 import { AuthenticationService, CredentialsService } from '@app/auth';
 import { MatSidenav } from '@angular/material/sidenav';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CalenderComponent } from './sidenav-components/calender/calender.component';
 import { ChatComponent } from './sidenav-components/chat/chat.component';
 import { JobFolderComponent } from './sidenav-components/job-folder/job-folder.component';
@@ -126,7 +126,7 @@ export class ShellComponent implements OnInit {
   }
   openJobSign() {
     this.dialog.open(JobsignComponent, {
-      width: '370px',
+      width: '450px',
       height: '100vh',
       position: { right: '5%' },
     });

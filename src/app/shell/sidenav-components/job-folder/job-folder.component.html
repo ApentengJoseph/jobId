@@ -1,33 +1,94 @@
 <div class="container">
-  <div class="top-bar">
-    <p class="border-b">
-      <span><img src="../../../../assets/icons/wechat.svg" alt="" /></span>
-      <span>Job Folder</span>
-    </p>
-    <div class="main">
-      <div class="all" (click)="selectTab(0)">All</div>
-      <div class="date" (click)="selectTab(1)">Date Modified</div>
-      <div class="type" (click)="selectTab(2)">File Type</div>
-      <div class="size" (click)="selectTab(3)">Size</div>
+  <div [ngClass]="{ children: openedFile }">
+    <div class="top-bar">
+      <div>
+        <div class="top-child border-b" *ngIf="!openedFile">
+          <span><img src="../../../../assets/icons/icon-3.png" alt="" /></span>
+          <span>Job Folder</span>
+        </div>
+        <div class="border-b fxflex" *ngIf="openedFile">
+          <div class="top-child">
+            <img src="../../../../assets/icons/job-arrow.png" alt="" (click)="back()" />
+            <span>Job Folder</span>
+          </div>
+          <img src="../../../../assets/icons/xx.png" alt="" (click)="closeDialog()" />
+        </div>
+      </div>
+      <div class="main">
+        <div class="all" (click)="selectTab(0)">All</div>
+        <div class="date" (click)="selectTab(1)">Date Modified</div>
+        <div class="type" (click)="selectTab(2)">File Type</div>
+        <div class="size" (click)="selectTab(3)">Size</div>
+      </div>
+      <div class="search-container">
+        <img src="../../assets/search.svg" alt="Search" class="search-icon" />
+        <input type="text" placeholder="Search" class="search-bar" />
+      </div>
+      <!-- open file -->
+      <div *ngIf="openedFile">
+        <div *ngFor="let file of folderFile" class="file-holder">
+          <div class="child-holder">
+            <img class="doc-image" src="../../../../assets/icons/File icon.png" alt="" />
+            <div>
+              <p>{{ file.header }}</p>
+              <span>{{ file.subText }}</span>
+            </div>
+          </div>
+          <div class="child-holder">
+            <p>{{ file.time }}</p>
+            <span> <img src="../../../../assets/icons/more-black.png" alt="" /> </span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="search-container">
-      <img src="../../assets/search.svg" alt="Search" class="search-icon" />
-      <input type="text" placeholder="Search" class="search-bar" />
+    <div class="file-details" *ngIf="openedFile">
+      <div class="details-header">
+        <img src="../../../../assets/icons/xx.png" alt="" (click)="closeDialog()" />
+        <p>Non Disclosure agreement</p>
+        <div class="zoom">
+          <p>1</p>
+          <span>/</span>
+          <span>1</span>
+        </div>
+        <div class="zoom">
+          <img src="../../../../assets/icons/minus.png" alt="" />
+          <p>100%</p>
+          <img src="../../../../assets/icons/add.svg" alt="" />
+        </div>
+      </div>
+      <div class="main-details">
+        <div class="main-start-convo">
+          <img src="../../../../assets/images/bloom.png" alt="" />
+          <h2>Bloomery</h2>
+        </div>
+        <h4>NON-DISCLOSURE AGREEMENT</h4>
+        <p>
+          This Non-disclosure agreement is entered into on saturday 14th novermber by Perry White and James Whittaker on
+          the issue of the Crypto project and all files connected to it. Disclosing party and receiving party have
+          indicated an interest in working together to ensure the success of the project, and the futherance of a
+          bussiness relationship. In connection to the parties evaluation of the cost, the aim and possible future of
+          this project, each party and their associates are bound to this document. Both parties retain proprietry
+          rights on all project deliverables as long as the terms of payment contract is upheld. Any breach of this
+          contract will attract a fine, and the loss of the contract. I, ________________ acting as the _____________ of
+          Swanta and Co. Hereby agrees to these terms and conditions and will see that they be carried out accordingly
+          and to the best of my abilities.
+        </p>
+      </div>
     </div>
   </div>
-  <!-- when no file in folder -->
-  <div class="">
-    <div class="main-start-convo">
+  <!-- when no file in folder// empty state-->
+
+  <!-- <div class="" *ngIf="!openedFile ">
+    <div class="main-start-convo m8">
       <div>
-        <img class="img-convo" src="../../../../assets/images/new-convo.svg" alt="" />
+        <img class="img-convo" src="../../../../assets/icons/folder-empty-state.png" alt="" />
 
         <h3>You have no file</h3>
         <p>Click on an existing chat or click "New folder" to create a new Conversation</p>
       </div>
     </div>
     <div class="openOpt">
-      <p (click)="open()">click open</p>
-      <!-- <p (click)="close()">click close</p> -->
+      <img (click)="open()" src="../../../../assets/icons/action-plus-button.png" alt="" />
       <div class="option" *ngIf="openOptions">
         <div class="choose-opt">
           <div>New folder</div>
@@ -36,38 +97,23 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
   <!-- when file incuded in folder -->
-  <div class="file-grid">
+  <div class="file-grid" *ngIf="!openedFile">
     <div *ngFor="let items of files">
       <div>
         <div class="file" (click)="openFile()">
-          <img src="" alt="" />
-          <p>{{ items.fileName }}</p>
-          <p>{{ items.numberOfFiles }}</p>
-        </div>
-        <img src="" alt="" />
-      </div>
-    </div>
-  </div>
-  <!-- open file -->
-  <div *ngIf="openedFile" class="file-details">
-    <div>
-      <div *ngFor="let file of folderFile" class="file-holder">
-        <div class="holder2">
-          <img src="" alt="" />
-          <div>
-            <p>{{ file.header }}</p>
-            <p>{{ file.subText }}</p>
+          <div class="filings">
+            <div>
+              <img src="../../../../assets/images/folderr.png" alt="" />
+              <p>{{ items.fileName }}</p>
+              <p>{{ items.numberOfFiles }}</p>
+            </div>
+            <!-- <img src="../../../../assets/icons/more-black.png" alt="" /> -->
           </div>
         </div>
-        <div>
-          <p>{{ file.time }}</p>
-          <img src="" alt="" />
-        </div>
       </div>
-      <div></div>
     </div>
-    <div>bbb</div>
   </div>
 </div>
